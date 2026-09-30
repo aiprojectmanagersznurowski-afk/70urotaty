@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C77A"/>
+      <stop offset="50%" stop-color="#C5A059"/>
+      <stop offset="100%" stop-color="#8F6E28"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#254436" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+  <text x="32" y="38" font-family="'Playfair Display', Georgia, serif" font-size="20" font-weight="700" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">70</text>
+</svg>
