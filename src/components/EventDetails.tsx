@@ -12,55 +12,55 @@ export const EventDetails: React.FC = () => {
   };
 
   return (
-    <section id="szczegoly" className="w-full max-w-3xl mx-auto px-4 py-16">
+    <section id="szczegoly" className="w-full max-w-4xl mx-auto px-4 py-16">
       {/* Section Header */}
       <div className="text-center mb-10 space-y-2">
-        <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#C5A059]">
+        <span className="text-xs uppercase tracking-[0.22em] font-bold text-[#C89D52]">
           Logistyka i Harmonogram
         </span>
-        <h2 className="font-serif text-3xl sm:text-4xl text-[#1E1C1A] font-semibold">
+        <h2 className="font-display text-3xl sm:text-4xl text-[#0E2646] font-bold tracking-tight">
           Kiedy i Gdzie
         </h2>
-        <div className="w-16 h-0.5 bg-[#C5A059] mx-auto mt-2 opacity-60" />
+        <div className="w-16 h-0.5 bg-[#C89D52] mx-auto mt-2 opacity-70" />
       </div>
 
       {/* Main Luxury Card */}
-      <div className="relative bg-[#FFFFFF] rounded-3xl p-6 sm:p-10 border border-[#1E1C1A]/10 tuscan-card-shadow overflow-hidden">
+      <div className="relative bg-[#FFFFFF] rounded-3xl p-6 sm:p-10 border border-[#0E2646]/10 tuscan-card-shadow overflow-hidden">
         {/* Decorative corner accent */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/15 via-transparent to-transparent pointer-events-none rounded-tr-3xl" />
+        <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-[#C89D52]/15 via-transparent to-transparent pointer-events-none rounded-tr-3xl" />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#1E1C1A]/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#0E2646]/10">
           {/* Column 1: Date & Time */}
           <div className="space-y-6 pt-2 md:pt-0">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#254436]/10 flex items-center justify-center shrink-0 border border-[#254436]/20">
-                <Calendar className="w-6 h-6 text-[#254436]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0E2646]/10 flex items-center justify-center shrink-0 border border-[#0E2646]/15">
+                <Calendar className="w-6 h-6 text-[#0E2646]" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-[#C5A059] font-bold">
+                <h3 className="text-xs uppercase tracking-wider text-[#C89D52] font-bold">
                   Data Spotkania
                 </h3>
-                <p className="font-serif text-2xl text-[#1E1C1A] font-semibold">
+                <p className="font-display text-2xl text-[#0A131F] font-bold">
                   {siteConfig.event.date.dayOfWeek}
                 </p>
-                <p className="text-stone-600 font-medium text-base">
+                <p className="text-slate-600 font-medium text-base">
                   {siteConfig.event.date.displayDate} r.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#C5A059]/15 flex items-center justify-center shrink-0 border border-[#C5A059]/30">
-                <Clock className="w-6 h-6 text-[#9B772F]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#C89D52]/15 flex items-center justify-center shrink-0 border border-[#C89D52]/30">
+                <Clock className="w-6 h-6 text-[#9A6E24]" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-[#C5A059] font-bold">
+                <h3 className="text-xs uppercase tracking-wider text-[#C89D52] font-bold">
                   Czas Trwania
                 </h3>
-                <p className="font-serif text-2xl text-[#1E1C1A] font-semibold">
+                <p className="font-display text-2xl text-[#0A131F] font-bold">
                   {siteConfig.event.date.startTime} – {siteConfig.event.date.endTime}
                 </p>
-                <p className="text-stone-600 text-sm">
+                <p className="text-slate-600 text-sm">
                   Uroczysty obiad o 16:30, po nim toskańskie biesiadowanie i deser
                 </p>
               </div>
@@ -68,11 +68,11 @@ export const EventDetails: React.FC = () => {
 
             {/* Calendar Buttons */}
             <div className="pt-2 space-y-2.5">
-              <p className="text-xs text-stone-500 font-medium">Zapisz termin w kalendarzu:</p>
+              <p className="text-xs text-slate-500 font-semibold">Zapisz termin w kalendarzu:</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <button
                   onClick={handleAppleCalendar}
-                  className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#EFECE6] border border-[#1E1C1A]/15 text-[#1E1C1A] text-xs font-semibold transition-all shadow-sm active:scale-98"
+                  className="btn-modern-light flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
                 >
                   {downloadedIcs ? (
                     <>
@@ -91,9 +91,9 @@ export const EventDetails: React.FC = () => {
                   href={getGoogleCalendarUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#EFECE6] border border-[#1E1C1A]/15 text-[#1E1C1A] text-xs font-semibold transition-all shadow-sm active:scale-98"
+                  className="btn-modern-light flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
                 >
-                  <CalendarPlus className="w-4 h-4 text-[#254436]" />
+                  <CalendarPlus className="w-4 h-4 text-[#0E2646]" />
                   <span>Google Calendar</span>
                 </a>
               </div>
@@ -103,31 +103,31 @@ export const EventDetails: React.FC = () => {
           {/* Column 2: Venue & Location */}
           <div className="space-y-6 pt-6 md:pt-0 md:pl-8">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#254436] flex items-center justify-center shrink-0 shadow-md">
-                <MapPin className="w-6 h-6 text-[#DEC283]" />
+              <div className="w-12 h-12 rounded-2xl bg-[#0E2646] flex items-center justify-center shrink-0 shadow-md">
+                <MapPin className="w-6 h-6 text-[#E5C582]" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs uppercase tracking-wider text-[#C5A059] font-bold">
+                <h3 className="text-xs uppercase tracking-wider text-[#C89D52] font-bold">
                   Miejsce Uroczystości
                 </h3>
-                <p className="font-serif text-2xl text-[#1E1C1A] font-semibold leading-tight">
+                <p className="font-display text-2xl text-[#0A131F] font-bold leading-tight">
                   {siteConfig.event.location.name}
                 </p>
-                <p className="text-stone-600 text-sm">
+                <p className="text-slate-600 text-sm">
                   {siteConfig.event.location.subname}
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#FAF8F5] rounded-2xl p-4 border border-[#1E1C1A]/10 space-y-2">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#254436] flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <div className="bg-[#F7F9FC] rounded-2xl p-4 border border-[#0E2646]/10 space-y-2">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#0E2646] flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#C89D52]" />
                 <span>Dokładny Adres</span>
               </div>
-              <p className="text-stone-800 font-medium text-base">
+              <p className="text-slate-800 font-semibold text-base">
                 {siteConfig.event.location.address}
               </p>
-              <p className="text-stone-600 text-sm">
+              <p className="text-slate-600 text-sm">
                 {siteConfig.event.location.postalCode} {siteConfig.event.location.city}
               </p>
 
@@ -136,23 +136,23 @@ export const EventDetails: React.FC = () => {
                   href={siteConfig.event.location.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#254436] hover:text-[#193126] font-semibold underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#0E2646] hover:text-[#1A4476] font-bold underline underline-offset-4"
                 >
                   <span>Profil lokalu na Facebooku</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3 h-3 text-[#C89D52]" />
                 </a>
               </div>
             </div>
 
             {/* Highlights tags */}
             <div className="flex flex-wrap gap-2 pt-1">
-              <span className="px-3 py-1 rounded-full bg-[#EFECE6] text-stone-700 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-[#F3ECE0] text-slate-700 text-xs font-semibold">
                 🍷 Toskańskie specjały
               </span>
-              <span className="px-3 py-1 rounded-full bg-[#EFECE6] text-stone-700 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-[#F3ECE0] text-slate-700 text-xs font-semibold">
                 🚗 Bezpłatny parking na posesji
               </span>
-              <span className="px-3 py-1 rounded-full bg-[#EFECE6] text-stone-700 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-[#F3ECE0] text-slate-700 text-xs font-semibold">
                 🌿 Ogród & taras
               </span>
             </div>

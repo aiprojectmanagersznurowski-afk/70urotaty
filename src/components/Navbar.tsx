@@ -25,24 +25,24 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#1E1C1A]/10 shadow-sm py-2.5'
+          ? 'bg-[#F7F9FC]/90 backdrop-blur-md border-b border-[#0E2646]/10 shadow-sm py-2.5'
           : 'bg-transparent py-4'
       }`}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Monogram / Brand */}
         <button
           onClick={() => scrollToSection('hero')}
-          className="flex items-center gap-2 text-left group transition-transform active:scale-95"
+          className="flex items-center gap-2.5 text-left group transition-transform active:scale-95 cursor-pointer"
         >
-          <div className="w-8 h-8 rounded-full border border-[#C5A059] flex items-center justify-center bg-[#254436] text-[#FAF8F5] font-serif text-sm font-bold shadow-sm">
+          <div className="w-8 h-8 rounded-full border border-[#C89D52] flex items-center justify-center bg-[#0E2646] text-[#FFFFFF] font-display text-sm font-bold shadow-sm">
             70
           </div>
           <div>
-            <span className="font-serif text-sm font-semibold tracking-wider text-[#1E1C1A] block leading-none">
-              TATA 70
+            <span className="font-display text-sm font-bold tracking-wider text-[#0A131F] block leading-none">
+              TATA STANISŁAW
             </span>
-            <span className="text-[10px] tracking-widest uppercase text-[#C5A059] font-medium">
+            <span className="text-[10px] tracking-widest uppercase text-[#C89D52] font-semibold">
               Toscana Wierzbna
             </span>
           </div>
@@ -52,35 +52,35 @@ export const Navbar: React.FC = () => {
         <nav className="hidden md:flex items-center gap-6">
           <button
             onClick={() => scrollToSection('szczegoly')}
-            className="text-xs uppercase tracking-wider font-medium text-[#1E1C1A]/75 hover:text-[#254436] transition-colors"
+            className="text-xs uppercase tracking-wider font-semibold text-[#0A131F]/75 hover:text-[#0E2646] transition-colors cursor-pointer"
           >
             Kiedy i Gdzie
           </button>
           <button
             onClick={() => scrollToSection('dojazd')}
-            className="text-xs uppercase tracking-wider font-medium text-[#1E1C1A]/75 hover:text-[#254436] transition-colors"
+            className="text-xs uppercase tracking-wider font-semibold text-[#0A131F]/75 hover:text-[#0E2646] transition-colors cursor-pointer"
           >
             Dojazd & Parking
           </button>
           <button
             onClick={() => scrollToSection('atmosfera')}
-            className="text-xs uppercase tracking-wider font-medium text-[#1E1C1A]/75 hover:text-[#254436] transition-colors"
+            className="text-xs uppercase tracking-wider font-semibold text-[#0A131F]/75 hover:text-[#0E2646] transition-colors cursor-pointer"
           >
             Atmosfera
           </button>
           <button
             onClick={() => scrollToSection('galeria')}
-            className="text-xs uppercase tracking-wider font-medium text-[#1E1C1A]/75 hover:text-[#254436] transition-colors"
+            className="text-xs uppercase tracking-wider font-semibold text-[#0A131F]/75 hover:text-[#0E2646] transition-colors cursor-pointer"
           >
             Wspomnienia
           </button>
 
           <button
             onClick={() => scrollToSection('rsvp')}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#254436] text-[#FAF8F5] border border-[#C5A059]/40 hover:bg-[#193126] transition-all shadow-sm hover:shadow"
+            className="btn-modern-dark inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider cursor-pointer"
           >
-            <CheckCircle className="w-3.5 h-3.5 text-[#C5A059]" />
-            Potwierdź obecność
+            <CheckCircle className="w-3.5 h-3.5 text-[#E5C582]" />
+            <span>Potwierdź obecność</span>
           </button>
         </nav>
 
@@ -88,13 +88,13 @@ export const Navbar: React.FC = () => {
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => scrollToSection('rsvp')}
-            className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-[#254436] text-[#FAF8F5] border border-[#C5A059]/30"
+            className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-[#0E2646] text-[#FFFFFF] border border-[#C89D52]/40"
           >
             RSVP
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-md text-[#1E1C1A] hover:bg-stone-200/50 transition-colors"
+            className="p-1.5 rounded-md text-[#0A131F] hover:bg-slate-200/50 transition-colors"
             aria-label="Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -104,40 +104,40 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-b border-[#1E1C1A]/10 px-4 pt-3 pb-5 shadow-lg space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden bg-[#F7F9FC] border-b border-[#0E2646]/10 px-4 pt-3 pb-5 shadow-lg space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
           <button
             onClick={() => scrollToSection('szczegoly')}
-            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#1E1C1A] hover:bg-[#EFECE6]"
+            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#0A131F] hover:bg-[#F3ECE0]"
           >
-            <Calendar className="w-4 h-4 text-[#C5A059]" />
+            <Calendar className="w-4 h-4 text-[#C89D52]" />
             <span>Kiedy i Gdzie</span>
           </button>
           <button
             onClick={() => scrollToSection('dojazd')}
-            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#1E1C1A] hover:bg-[#EFECE6]"
+            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#0A131F] hover:bg-[#F3ECE0]"
           >
-            <MapPin className="w-4 h-4 text-[#C5A059]" />
+            <MapPin className="w-4 h-4 text-[#C89D52]" />
             <span>Dojazd & Parking</span>
           </button>
           <button
             onClick={() => scrollToSection('atmosfera')}
-            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#1E1C1A] hover:bg-[#EFECE6]"
+            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#0A131F] hover:bg-[#F3ECE0]"
           >
-            <span className="text-[#C5A059] text-base leading-none">🌿</span>
+            <span className="text-[#C89D52] text-base leading-none">🌿</span>
             <span>Toskańska Atmosfera</span>
           </button>
           <button
             onClick={() => scrollToSection('galeria')}
-            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#1E1C1A] hover:bg-[#EFECE6]"
+            className="flex items-center gap-3 w-full text-left py-2 px-2 rounded-lg text-sm text-[#0A131F] hover:bg-[#F3ECE0]"
           >
-            <ImageIcon className="w-4 h-4 text-[#C5A059]" />
+            <ImageIcon className="w-4 h-4 text-[#C89D52]" />
             <span>Galeria Wspomnień</span>
           </button>
           <button
             onClick={() => scrollToSection('rsvp')}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#254436] text-[#FAF8F5] font-semibold text-sm shadow-md"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#0E2646] text-[#FFFFFF] font-semibold text-sm shadow-md"
           >
-            <CheckCircle className="w-4 h-4 text-[#C5A059]" />
+            <CheckCircle className="w-4 h-4 text-[#E5C582]" />
             <span>Potwierdź obecność (RSVP)</span>
           </button>
         </div>

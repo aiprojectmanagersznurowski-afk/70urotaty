@@ -12,7 +12,7 @@ import { AudioPlayer } from './components/AudioPlayer';
 
 export const App: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-[#FAF8F5] text-[#1E1C1A] flex flex-col items-center selection:bg-[#C5A059]/25 selection:text-[#254436]">
+    <div className="w-full min-h-screen bg-[#FAF8F5] text-[#1E1C1A] flex flex-col items-center selection:bg-[#C89D52]/25 selection:text-[#0E2646]">
       {/* Navigation Header */}
       <Navbar />
 

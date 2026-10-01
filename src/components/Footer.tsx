@@ -8,14 +8,14 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#1E1C1A] text-[#FAF8F5] pt-14 pb-12 px-4 border-t border-[#C5A059]/20 relative overflow-hidden">
+    <footer className="w-full bg-[#1E1C1A] text-[#FAF8F5] pt-14 pb-12 px-4 border-t border-[#C89D52]/20 relative overflow-hidden">
       {/* Decorative top gold line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-60" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C89D52] to-transparent opacity-60" />
 
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center space-y-6">
         {/* Jubilee Crest Monogram */}
         <div className="flex flex-col items-center space-y-3">
-          <div className="w-14 h-14 rounded-full border-2 border-[#C5A059] flex items-center justify-center bg-[#254436] text-[#FAF8F5] font-display text-2xl font-bold shadow-lg tuscan-gold-glow">
+          <div className="w-14 h-14 rounded-full border-2 border-[#C89D52] flex items-center justify-center bg-[#0E2646] text-[#FAF8F5] font-display text-2xl font-bold shadow-lg gold-glow-marine">
             70
           </div>
           <span className="font-display text-lg tracking-widest uppercase font-semibold text-[#FAF8F5]">
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
         <div className="text-stone-400 text-xs max-w-sm space-y-1.5 pt-2">
           <p className="flex items-center justify-center gap-1.5 text-stone-300 font-medium">
             <span>Czekamy na Ciebie z otwartymi ramionami</span>
-            <Heart className="w-3.5 h-3.5 text-[#C5A059] fill-[#C5A059]" />
+            <Heart className="w-3.5 h-3.5 text-[#C89D52] fill-[#C89D52]" />
           </p>
           <p className="text-[11px] text-stone-500">
             Restauracja & Pizzeria Toscana • ul. Spokojna 3, Wierzbna

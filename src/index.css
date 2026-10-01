@@ -2,21 +2,28 @@
 
 @layer base {
   :root {
-    --color-bg: #FAF8F5;
+    /* Coastal Ocean & Golden Beach Palette inspired by IMG_9176.jpg */
+    --color-bg: #F7F9FC;
     --color-paper: #FFFFFF;
-    --color-ink: #1E1C1A;
-    --color-cypress: #254436;
-    --color-cypress-dark: #193126;
-    --color-cypress-light: #325745;
-    --color-gold: #C5A059;
-    --color-gold-light: #DEC283;
-    --color-gold-dark: #9B772F;
-    --color-sand: #EFECE6;
-    --color-sand-dark: #E2DDD3;
-    --color-line: rgba(30, 28, 26, 0.09);
+    --color-ink: #0A131F;
+    
+    /* Deep Mediterranean Ocean Blues */
+    --color-primary: #0E2646;
+    --color-primary-dark: #071324;
+    --color-primary-light: #1A4476;
+    --color-azure: #2563EB;
+    --color-azure-light: #38BDF8;
+    --color-azure-soft: #E0F0FE;
+
+    /* Warm Coastal Beach Sand & Amber Gold */
+    --color-gold: #C89D52;
+    --color-gold-light: #E5C582;
+    --color-gold-dark: #9A6E24;
+    --color-sand: #F3ECE0;
+    --color-sand-dark: #E6DCB8;
+    --color-line: rgba(14, 38, 70, 0.09);
 
     --font-display: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-serif: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
@@ -53,49 +60,173 @@
   }
 }
 
-.font-display,
-.font-serif {
+.font-display {
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.025em;
 }
 
-.font-cinzel {
+.font-serif {
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.025em;
 }
 
 .font-sans {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Custom Gradients and Jubilee Gold Effects */
-.gold-text-gradient {
-  background: linear-gradient(135deg, #DEBE78 0%, #C5A059 50%, #9B772F 100%);
+/* ===================================================================
+   VISUALS.MD CINEMATIC & SKEUOMORPHIC STYLES (Adapted to Coastal Colors)
+   =================================================================== */
+
+.film-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiLz48L3N2Zz4=");
+}
+
+.bg-grid-theme {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, color-mix(in srgb, var(--color-primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-primary) 6%, transparent) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+/* 3D Matte & Metallic Gradients */
+.text-3d-matte {
+  color: #0E2646;
+  text-shadow: 
+    0 12px 35px rgba(14, 38, 70, 0.18), 
+    0 2px 4px rgba(14, 38, 70, 0.08);
+}
+
+.text-silver-matte {
+  background: linear-gradient(180deg, #1A4476 0%, #071324 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateZ(0);
+  filter: drop-shadow(0px 8px 16px rgba(14, 38, 70, 0.12));
 }
 
-.cypress-gradient {
-  background: linear-gradient(135deg, #254436 0%, #193126 100%);
+.text-card-silver-matte {
+  background: linear-gradient(180deg, #FFFFFF 0%, #B8CCE0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateZ(0);
+  filter: 
+    drop-shadow(0px 10px 20px rgba(0,0,0,0.8)) 
+    drop-shadow(0px 3px 6px rgba(0,0,0,0.6));
 }
 
-.gold-border-gradient {
-  border-image: linear-gradient(135deg, #DEBE78, #C5A059, #9B772F) 1;
+.gold-text-gradient {
+  background: linear-gradient(135deg, #E5C582 0%, #C89D52 50%, #9A6E24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-glow {
+  box-shadow: 0 0 35px rgba(200, 157, 82, 0.35);
+}
+
+/* Deep Physical Skeuomorphic Card with Dynamic Mouse Lighting */
+.premium-depth-card {
+  background: linear-gradient(145deg, #0F2A4D 0%, #06101D 100%);
+  box-shadow: 
+    0 40px 100px -20px rgba(7, 19, 36, 0.85),
+    0 20px 40px -20px rgba(7, 19, 36, 0.7),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(200, 157, 82, 0.2);
+  position: relative;
+}
+
+.card-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 40;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(229, 197, 130, 0.08) 0%, rgba(56, 189, 248, 0.04) 25%, transparent 50%);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+}
+
+.floating-ui-badge {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(24px); 
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 20px 45px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Tactile Physical Buttons from visuals.md */
+.btn-modern-light {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  color: #0E2646;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.1), 0 12px 24px -4px rgba(14,38,70,0.25), inset 0 1px 1px rgba(255,255,255,1), inset 0 -3px 6px rgba(0,0,0,0.06);
+}
+.btn-modern-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 6px 12px -2px rgba(0,0,0,0.15), 0 20px 32px -6px rgba(14,38,70,0.35), inset 0 1px 1px rgba(255,255,255,1), inset 0 -3px 6px rgba(0,0,0,0.06);
+}
+.btn-modern-light:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 100%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn-modern-dark {
+  background: linear-gradient(180deg, #1A4476 0%, #0E2646 100%);
+  color: #FFFFFF;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 0 1px rgba(229,197,130,0.3), 0 2px 4px rgba(0,0,0,0.5), 0 12px 24px -4px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -3px 6px rgba(0,0,0,0.6);
+}
+.btn-modern-dark:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, #245896 0%, #122F55 100%);
+  box-shadow: 0 0 0 1px rgba(229,197,130,0.5), 0 6px 14px -2px rgba(0,0,0,0.6), 0 20px 32px -6px rgba(0,0,0,0.85), inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.6);
+}
+.btn-modern-dark:active {
+  transform: translateY(1px);
+  background: #0E2646;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1), inset 0 3px 8px rgba(0,0,0,0.8);
+}
+
+.btn-modern-gold {
+  background: linear-gradient(180deg, #E5C582 0%, #C89D52 100%);
+  color: #071324;
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.15), 0 12px 24px -4px rgba(200,157,82,0.4), inset 0 1px 1px rgba(255,255,255,0.9), inset 0 -3px 6px rgba(0,0,0,0.1);
+}
+.btn-modern-gold:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, #F0D598 0%, #D4A95F 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.6), 0 6px 14px -2px rgba(0,0,0,0.2), 0 20px 32px -6px rgba(200,157,82,0.55), inset 0 1px 1px rgba(255,255,255,1), inset 0 -3px 6px rgba(0,0,0,0.1);
+}
+.btn-modern-gold:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #D4A95F 0%, #B88E44 100%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), inset 0 3px 6px rgba(0,0,0,0.2);
 }
 
 .tuscan-card-shadow {
-  box-shadow: 0 10px 30px -5px rgba(37, 68, 54, 0.06), 0 20px 40px -10px rgba(30, 28, 26, 0.04);
+  box-shadow: 0 10px 30px -5px rgba(14, 38, 70, 0.07), 0 20px 40px -10px rgba(10, 19, 31, 0.05);
 }
 
-.tuscan-card-shadow-lg {
-  box-shadow: 0 20px 45px -10px rgba(37, 68, 54, 0.1), 0 30px 60px -15px rgba(30, 28, 26, 0.06);
-}
-
-.tuscan-gold-glow {
-  box-shadow: 0 0 25px rgba(197, 160, 89, 0.25);
-}
-
-/* Safe area support for iOS notched displays */
 .safe-top {
   padding-top: max(1rem, env(safe-area-inset-top));
 }
@@ -104,7 +235,6 @@
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 
-/* Reduced Motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-delay: -1ms !important;
