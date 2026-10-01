@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, ArrowUp, Heart } from 'lucide-react';
+import { ArrowUp, Heart } from 'lucide-react';
 import { siteConfig } from '../config/site';
 
 export const Footer: React.FC = () => {
@@ -12,42 +12,20 @@ export const Footer: React.FC = () => {
       {/* Decorative top gold line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-60" />
 
-      <div className="max-w-3xl mx-auto flex flex-col items-center text-center space-y-8">
+      <div className="max-w-3xl mx-auto flex flex-col items-center text-center space-y-6">
         {/* Jubilee Crest Monogram */}
-        <div className="flex flex-col items-center space-y-2">
-          <div className="w-14 h-14 rounded-full border-2 border-[#C5A059] flex items-center justify-center bg-[#254436] text-[#FAF8F5] font-serif text-2xl font-bold shadow-lg tuscan-gold-glow">
+        <div className="flex flex-col items-center space-y-3">
+          <div className="w-14 h-14 rounded-full border-2 border-[#C5A059] flex items-center justify-center bg-[#254436] text-[#FAF8F5] font-display text-2xl font-bold shadow-lg tuscan-gold-glow">
             70
           </div>
-          <span className="font-serif text-lg tracking-widest uppercase text-[#FAF8F5]">
+          <span className="font-display text-lg tracking-widest uppercase font-semibold text-[#FAF8F5]">
             {siteConfig.event.celebrantFullName}
           </span>
-          <span className="text-xs uppercase tracking-[0.25em] text-[#DEC283]">
-            1956 – 2026 • 70 Lat
-          </span>
-        </div>
-
-        {/* Contact info for questions */}
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-5 max-w-md w-full space-y-3">
-          <p className="text-xs uppercase tracking-wider text-[#DEC283] font-semibold">
-            Masz pytania organizacyjne?
-          </p>
-          {siteConfig.event.rsvp.contactPersons.map((contact, idx) => (
-            <div key={idx} className="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
-              <span className="text-stone-300 font-medium">{contact.name}</span>
-              <a
-                href={`tel:${contact.phone}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#254436] hover:bg-[#325745] text-[#FAF8F5] text-xs font-semibold transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#DEC283]" />
-                <span>{contact.formattedPhone}</span>
-              </a>
-            </div>
-          ))}
         </div>
 
         {/* Closing Warm Message */}
-        <div className="text-stone-400 text-xs max-w-sm space-y-1">
-          <p className="flex items-center justify-center gap-1.5 text-stone-300">
+        <div className="text-stone-400 text-xs max-w-sm space-y-1.5 pt-2">
+          <p className="flex items-center justify-center gap-1.5 text-stone-300 font-medium">
             <span>Czekamy na Ciebie z otwartymi ramionami</span>
             <Heart className="w-3.5 h-3.5 text-[#C5A059] fill-[#C5A059]" />
           </p>

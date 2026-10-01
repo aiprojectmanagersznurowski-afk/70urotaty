@@ -102,12 +102,12 @@ export const Hero: React.FC = () => {
         {/* Giant Stylized 70 in Background with Golden Outline / Soft Glow */}
         <div
           ref={numberRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 opacity-80"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0 opacity-85"
         >
-          <span className="font-serif text-[180px] sm:text-[230px] md:text-[270px] font-bold text-transparent tracking-tighter leading-none"
+          <span className="font-display text-[190px] sm:text-[240px] md:text-[280px] font-extrabold text-transparent tracking-tighter leading-none"
                 style={{
-                  WebkitTextStroke: '2px rgba(197, 160, 89, 0.45)',
-                  textShadow: '0 0 45px rgba(222, 194, 131, 0.25)',
+                  WebkitTextStroke: '2.5px rgba(197, 160, 89, 0.5)',
+                  textShadow: '0 0 50px rgba(222, 194, 131, 0.35)',
                 }}>
             70
           </span>
@@ -141,14 +141,14 @@ export const Hero: React.FC = () => {
         className="w-full max-w-xl mx-auto flex flex-col items-center text-center space-y-4 z-20 mt-1"
       >
         <div className="space-y-1.5">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1E1C1A] tracking-tight leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E1C1A] tracking-tight leading-tight">
             Jubileusz 70. Urodzin{' '}
-            <span className="italic gold-text-gradient block sm:inline">
-              Taty {siteConfig.event.celebrantName ? `(${siteConfig.event.celebrantName})` : ''}
+            <span className="gold-text-gradient block sm:inline font-extrabold">
+              Taty Stanisława
             </span>
           </h1>
 
-          <p className="font-serif italic text-base sm:text-lg text-[#254436]/90 max-w-md mx-auto">
+          <p className="text-base sm:text-lg text-[#254436]/90 font-medium max-w-md mx-auto">
             „{siteConfig.event.subtitle}”
           </p>
         </div>

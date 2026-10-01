@@ -76,15 +76,15 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   meta: {
-    title: "Jubileusz 70. Urodzin Taty | Zaproszenie",
-    description: "Serdecznie zapraszamy na uroczysty obiad i toskańskie biesiadowanie z okazji 70. Urodzin Taty w Restauracji Toscana w Wierzbnej.",
+    title: "Jubileusz 70. Urodzin Taty Stanisława | Zaproszenie",
+    description: "Serdecznie zapraszamy na uroczysty obiad i toskańskie biesiadowanie z okazji 70. Urodzin Taty Stanisława w Restauracji Toscana w Wierzbnej.",
     ogImage: "/photos/gallery-7.jpg",
   },
   event: {
-    celebrantName: "Zygmunta",
-    celebrantFullName: "Zygmunt Sznurowski",
+    celebrantName: "Stanisława",
+    celebrantFullName: "Stanisław Sznurowski",
     age: 70,
-    title: "Jubileusz 70. Urodzin Taty",
+    title: "Jubileusz 70. Urodzin Taty Stanisława",
     subtitle: "Uroczysty obiad & toskańskie biesiadowanie w gronie najbliższych",
     tagline: "Siedem dekad pięknych historii, podróży i rodzinnego ciepła",
     type: "Uroczysty obiad i toskańskie biesiadowanie",

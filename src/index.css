@@ -15,7 +15,8 @@
     --color-sand-dark: #E2DDD3;
     --color-line: rgba(30, 28, 26, 0.09);
 
-    --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+    --font-display: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
@@ -52,12 +53,15 @@
   }
 }
 
+.font-display,
 .font-serif {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 .font-cinzel {
-  font-family: "Cinzel", "Playfair Display", serif;
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.05em;
 }
 
 .font-sans {
