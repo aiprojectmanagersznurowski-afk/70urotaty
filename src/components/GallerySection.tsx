@@ -83,16 +83,16 @@ export const GallerySection: React.FC = () => {
   };
 
   return (
-    <section className="w-full px-3 py-12 flex flex-col items-center bg-white" id="galeria">
+    <section className="w-full px-4 sm:px-6 py-14 flex flex-col items-center bg-white" id="galeria">
       {/* Eyebrow */}
-      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a3516] mb-4">
+      <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.18em] text-[var(--color-terracotta-deep)] mb-4">
         Wspomnienia i chwile
       </span>
 
-      {/* Grid of photos */}
+      {/* Grid of photos - broadened & responsive */}
       <div
         ref={revealRef}
-        className="w-full max-w-md grid grid-cols-2 gap-2"
+        className="w-full max-w-[500px] sm:max-w-xl grid grid-cols-2 gap-2.5 sm:gap-3"
       >
         {PHOTOS.gallery.map((photo, index) => (
           <div
@@ -203,7 +203,7 @@ export const GallerySection: React.FC = () => {
                   onClick={() => setSelectedIndex(idx)}
                   className={`w-9 h-9 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
                     idx === selectedIndex
-                      ? 'border-[#c85b28] scale-105 opacity-100 shadow-md'
+                      ? 'border-[var(--color-terracotta)] scale-105 opacity-100 shadow-md'
                       : 'border-transparent opacity-50 hover:opacity-80'
                   }`}
                 >

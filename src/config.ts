@@ -54,7 +54,7 @@ export interface GalleryPhoto {
 }
 
 export const PHOTOS = {
-  portrait: "/photos/tata-portrait-7654.png",
+  portrait: "/photos/tata-portrait-upper.png",
   hero: "/photos/IMG_9176.jpg",
   gallery: [
     { src: "/photos/IMG_5236.JPG", alt: "W gronie najbliższych przy wspólnym stole" },

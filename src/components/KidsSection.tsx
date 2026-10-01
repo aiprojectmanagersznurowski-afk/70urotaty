@@ -12,23 +12,23 @@ export const KidsSection: React.FC = () => {
   });
 
   return (
-    <section className="w-full px-6 py-8 flex flex-col items-center bg-white">
+    <section className="w-full px-4 sm:px-6 py-8 flex flex-col items-center bg-white">
       <div
         ref={revealRef}
-        className="w-full max-w-md rounded-[24px] bg-[#e8dcb8]/40 p-6 flex flex-col items-start gap-3"
+        className="w-full max-w-[500px] sm:max-w-xl rounded-[26px] bg-[var(--color-khaki)] p-6 sm:p-7 flex flex-col items-start gap-3 shadow-sm border border-[var(--color-line)]"
       >
         {/* Emoji Badge */}
-        <div className="w-10 h-10 rounded-full bg-[#e8dcb8]/70 flex items-center justify-center text-lg select-none">
+        <div className="w-11 h-11 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-xl select-none shadow-xs">
           🧸
         </div>
 
         {/* Title */}
-        <h3 className="text-[16px] font-bold text-[#1e1a17]">
+        <h3 className="text-[18px] sm:text-[20px] font-bold text-[var(--color-ink)]">
           Dla najmłodszych
         </h3>
 
         {/* Description */}
-        <p className="text-[13px] leading-relaxed text-[#1e1a17]/80">
+        <p className="text-[14px] sm:text-[15px] leading-relaxed text-[var(--color-ink)]/85">
           {KIDS.text}
         </p>
 
@@ -38,7 +38,7 @@ export const KidsSection: React.FC = () => {
             href={KIDS.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[12.5px] font-bold text-[#8a3516] hover:text-[#c85b28] underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+            className="text-[13.5px] sm:text-[14.5px] font-bold text-[var(--color-terracotta-deep)] hover:text-[var(--color-terracotta)] underline underline-offset-2 transition-colors inline-flex items-center gap-1 mt-1"
           >
             Zobacz kącik dla dzieci →
           </a>

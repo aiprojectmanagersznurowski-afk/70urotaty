@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { AudioPlayer } from './components/AudioPlayer';
 import { HeroSection } from './components/HeroSection';
 import { FullWidthImageSection } from './components/FullWidthImageSection';
@@ -11,7 +12,12 @@ import { FooterSection } from './components/FooterSection';
 
 export const App: React.FC = () => {
   return (
-    <div className="w-full min-h-svh bg-white text-[#211d1a] flex flex-col items-center">
+    <div className="w-full min-h-svh bg-white text-[var(--color-ink)] flex flex-col items-center">
+      {/* Przełącznik stylów u góry strony (Opcja 2 domyślna, Opcja 3) */}
+      <header className="w-full sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[var(--color-line)]/40 transition-colors">
+        <ThemeSwitcher />
+      </header>
+
       {/* 1. Odtwarzacz muzyki (pływający przycisk w prawym dolnym rogu) */}
       <AudioPlayer />
 

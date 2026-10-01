@@ -41,7 +41,7 @@ export const RsvpSection: React.FC = () => {
       submittedAt: new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' }),
     };
 
-    // Store in localStorage as instant reliable backup
+    // Store in localStorage as instant backup
     try {
       const existing = JSON.parse(localStorage.getItem('rsvp_submissions_70') || '[]');
       existing.push(payload);
@@ -51,55 +51,52 @@ export const RsvpSection: React.FC = () => {
     }
 
     try {
-      // POST with text/plain to avoid Google Apps Script CORS preflight issues
       await fetch(RSVP_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify(payload),
-        mode: 'no-cors', // Standard pattern for Google Apps Script Web Apps
+        mode: 'no-cors',
       });
 
       setIsSuccess(true);
     } catch (err) {
       console.warn('Submission to Google Apps Script failed:', err);
-      // If endpoint is not yet connected by user, still provide warm fallback or error note
-      // Since response is backed up in localStorage, we can display success or inform user
       setIsSuccess(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Fixed burst particles configuration for reliable rendering
+  // Fixed burst particles configuration
   const burstParticles = [
-    { dx: '-65px', dy: '-70px', delay: '0.02s', color: '#c85b28' },
-    { dx: '70px', dy: '-60px', delay: '0.04s', color: '#b8a26c' },
-    { dx: '-85px', dy: '15px', delay: '0.06s', color: '#b8a26c' },
-    { dx: '80px', dy: '25px', delay: '0.03s', color: '#c85b28' },
-    { dx: '-45px', dy: '80px', delay: '0.05s', color: '#c85b28' },
-    { dx: '55px', dy: '75px', delay: '0.01s', color: '#b8a26c' },
-    { dx: '0px', dy: '-85px', delay: '0.07s', color: '#c85b28' },
-    { dx: '-30px', dy: '-80px', delay: '0.08s', color: '#b8a26c' },
-    { dx: '35px', dy: '-75px', delay: '0.03s', color: '#c85b28' },
-    { dx: '-80px', dy: '-25px', delay: '0.09s', color: '#c85b28' },
-    { dx: '75px', dy: '-20px', delay: '0.05s', color: '#b8a26c' },
-    { dx: '-70px', dy: '55px', delay: '0.04s', color: '#b8a26c' },
-    { dx: '65px', dy: '60px', delay: '0.06s', color: '#c85b28' },
-    { dx: '0px', dy: '85px', delay: '0.02s', color: '#b8a26c' },
+    { dx: '-65px', dy: '-70px', delay: '0.02s' },
+    { dx: '70px', dy: '-60px', delay: '0.04s' },
+    { dx: '-85px', dy: '15px', delay: '0.06s' },
+    { dx: '80px', dy: '25px', delay: '0.03s' },
+    { dx: '-45px', dy: '80px', delay: '0.05s' },
+    { dx: '55px', dy: '75px', delay: '0.01s' },
+    { dx: '0px', dy: '-85px', delay: '0.07s' },
+    { dx: '-30px', dy: '-80px', delay: '0.08s' },
+    { dx: '35px', dy: '-75px', delay: '0.03s' },
+    { dx: '-80px', dy: '-25px', delay: '0.09s' },
+    { dx: '75px', dy: '-20px', delay: '0.05s' },
+    { dx: '-70px', dy: '55px', delay: '0.04s' },
+    { dx: '65px', dy: '60px', delay: '0.06s' },
+    { dx: '0px', dy: '85px', delay: '0.02s' },
   ];
 
   return (
-    <section className="w-full px-6 py-14 flex flex-col items-center bg-white" id="rsvp">
-      <div ref={revealRef} className="w-full max-w-md flex flex-col items-center gap-5">
-        {/* Eyebrow */}
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a3516]">
+    <section className="w-full px-4 sm:px-6 py-14 flex flex-col items-center bg-white" id="rsvp">
+      <div ref={revealRef} className="w-full max-w-[500px] sm:max-w-xl flex flex-col items-center gap-5">
+        {/* Eyebrow - enlarged */}
+        <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.18em] text-[var(--color-terracotta-deep)]">
           Potwierdź obecność
         </span>
 
-        {/* Heading */}
-        <h2 className="font-display text-[28px] sm:text-[32px] font-extrabold uppercase tracking-tight text-[#1e1a17] text-center -mt-1">
+        {/* Heading - enlarged */}
+        <h2 className="font-display text-[34px] sm:text-[42px] font-extrabold uppercase tracking-wide text-[var(--color-ink)] text-center -mt-1 leading-tight">
           Będziesz z nami?
         </h2>
 
@@ -107,17 +104,17 @@ export const RsvpSection: React.FC = () => {
         {!isSuccess ? (
           <form
             onSubmit={handleSubmit}
-            className="w-full rounded-[24px] border border-[#1e1a171f] bg-white p-6 flex flex-col gap-4 shadow-sm"
+            className="w-full rounded-[26px] border border-[var(--color-line)] bg-white p-6 sm:p-7 flex flex-col gap-4 shadow-sm"
           >
             {/* 1. Attending Segment Choice */}
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setAttending('yes')}
-                className={`py-3.5 px-3 rounded-[14px] text-[14px] font-bold transition-all active:scale-[0.98] ${
+                className={`py-4 px-3 rounded-[16px] text-[15px] sm:text-[16px] font-bold transition-all active:scale-[0.98] ${
                   attending === 'yes'
-                    ? 'bg-[#c85b28] text-white shadow-sm'
-                    : 'bg-white border border-[#1e1a171f] text-[#1e1a17] hover:bg-neutral-50'
+                    ? 'bg-[var(--color-terracotta)] text-white shadow-sm'
+                    : 'bg-white border border-[var(--color-line)] text-[var(--color-ink)] hover:bg-neutral-50'
                 }`}
               >
                 Będę 🎉
@@ -126,10 +123,10 @@ export const RsvpSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setAttending('no')}
-                className={`py-3.5 px-3 rounded-[14px] text-[14px] font-bold transition-all active:scale-[0.98] ${
+                className={`py-4 px-3 rounded-[16px] text-[15px] sm:text-[16px] font-bold transition-all active:scale-[0.98] ${
                   attending === 'no'
-                    ? 'bg-[#c85b28] text-white shadow-sm'
-                    : 'bg-white border border-[#1e1a171f] text-[#1e1a17] hover:bg-neutral-50'
+                    ? 'bg-[var(--color-terracotta)] text-white shadow-sm'
+                    : 'bg-white border border-[var(--color-line)] text-[var(--color-ink)] hover:bg-neutral-50'
                 }`}
               >
                 Nie dam rady
@@ -138,7 +135,7 @@ export const RsvpSection: React.FC = () => {
 
             {/* 2. Full Name Input */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="rsvp-name" className="text-[12.5px] font-bold text-[#1e1a17]">
+              <label htmlFor="rsvp-name" className="text-[13.5px] font-bold text-[var(--color-ink)]">
                 Imię i nazwisko
               </label>
               <input
@@ -148,7 +145,7 @@ export const RsvpSection: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="np. Ciocia Basia"
-                className="w-full rounded-[13px] border border-[#1e1a171f] bg-white px-4 py-3 text-[14px] text-[#1e1a17] placeholder:text-[#877d70]/60 focus:border-[#c85b28] focus:outline-none transition-colors"
+                className="w-full rounded-[14px] border border-[var(--color-line)] bg-white px-4 py-3.5 text-[15px] text-[var(--color-ink)] placeholder:text-[var(--color-muted)]/60 focus:border-[var(--color-terracotta)] focus:outline-none transition-colors"
               />
             </div>
 
@@ -156,51 +153,51 @@ export const RsvpSection: React.FC = () => {
             {attending === 'yes' && (
               <div className="grid grid-cols-2 gap-3 pt-1 transition-all">
                 {/* Adults Stepper */}
-                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#1e1a171f] bg-white">
-                  <span className="text-[12px] font-bold text-[#1e1a17]">Dorośli</span>
+                <div className="flex flex-col gap-1.5 p-3.5 rounded-[16px] border border-[var(--color-line)] bg-white">
+                  <span className="text-[13px] font-bold text-[var(--color-ink)]">Dorośli</span>
                   <div className="flex items-center justify-between mt-1">
                     <button
                       type="button"
                       onClick={() => setAdults((prev) => Math.max(1, prev - 1))}
                       disabled={adults <= 1}
                       aria-label="Mniej: Dorośli"
-                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
+                      className="w-8 h-8 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
                     >
-                      <Minus className="w-3.5 h-3.5" />
+                      <Minus className="w-4 h-4" />
                     </button>
-                    <span className="text-[15px] font-bold text-[#1e1a17]">{adults}</span>
+                    <span className="text-[16px] font-bold text-[var(--color-ink)]">{adults}</span>
                     <button
                       type="button"
                       onClick={() => setAdults((prev) => prev + 1)}
                       aria-label="Więcej: Dorośli"
-                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] active:scale-90 transition-transform"
+                      className="w-8 h-8 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] active:scale-90 transition-transform"
                     >
-                      <Plus className="w-3.5 h-3.5" />
+                      <Plus className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
 
                 {/* Kids Stepper */}
-                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#1e1a171f] bg-white">
-                  <span className="text-[12px] font-bold text-[#1e1a17]">Dzieci</span>
+                <div className="flex flex-col gap-1.5 p-3.5 rounded-[16px] border border-[var(--color-line)] bg-white">
+                  <span className="text-[13px] font-bold text-[var(--color-ink)]">Dzieci</span>
                   <div className="flex items-center justify-between mt-1">
                     <button
                       type="button"
                       onClick={() => setKids((prev) => Math.max(0, prev - 1))}
                       disabled={kids <= 0}
                       aria-label="Mniej: Dzieci"
-                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
+                      className="w-8 h-8 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
                     >
-                      <Minus className="w-3.5 h-3.5" />
+                      <Minus className="w-4 h-4" />
                     </button>
-                    <span className="text-[15px] font-bold text-[#1e1a17]">{kids}</span>
+                    <span className="text-[16px] font-bold text-[var(--color-ink)]">{kids}</span>
                     <button
                       type="button"
                       onClick={() => setKids((prev) => prev + 1)}
                       aria-label="Więcej: Dzieci"
-                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] active:scale-90 transition-transform"
+                      className="w-8 h-8 rounded-full border border-[var(--color-line)] flex items-center justify-center text-[var(--color-ink)] active:scale-90 transition-transform"
                     >
-                      <Plus className="w-3.5 h-3.5" />
+                      <Plus className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -209,8 +206,8 @@ export const RsvpSection: React.FC = () => {
 
             {/* 4. Notes textarea */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="rsvp-notes" className="text-[12.5px] font-bold text-[#1e1a17]">
-                Uwagi <span className="font-normal text-[#877d70]">(opcjonalnie)</span>
+              <label htmlFor="rsvp-notes" className="text-[13.5px] font-bold text-[var(--color-ink)]">
+                Uwagi <span className="font-normal text-[var(--color-muted)]">(opcjonalnie)</span>
               </label>
               <textarea
                 id="rsvp-notes"
@@ -218,13 +215,13 @@ export const RsvpSection: React.FC = () => {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="np. dieta, alergie"
-                className="w-full rounded-[13px] border border-[#1e1a171f] bg-white px-4 py-2.5 text-[14px] text-[#1e1a17] placeholder:text-[#877d70]/60 focus:border-[#c85b28] focus:outline-none resize-none transition-colors"
+                className="w-full rounded-[14px] border border-[var(--color-line)] bg-white px-4 py-3 text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted)]/60 focus:border-[var(--color-terracotta)] focus:outline-none resize-none transition-colors"
               />
             </div>
 
             {/* Error Message */}
             {errorMessage && (
-              <p className="text-[12.5px] text-[#c85b28] leading-snug">
+              <p className="text-[13px] text-[var(--color-terracotta)] leading-snug">
                 {errorMessage}
               </p>
             )}
@@ -233,23 +230,23 @@ export const RsvpSection: React.FC = () => {
             <button
               type="submit"
               disabled={!isFormValid || isSubmitting}
-              className="w-full rounded-[14px] bg-[#1e1a17] hover:bg-[#c85b28] disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98] text-white py-3.5 px-4 text-[14px] font-bold transition-all mt-1"
+              className="w-full rounded-[16px] bg-[var(--color-ink)] hover:bg-[var(--color-terracotta)] disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98] text-white py-4 px-4 text-[15.5px] font-bold transition-all mt-1 shadow-sm"
             >
               {isSubmitting ? 'Wysyłanie…' : 'Wyślij odpowiedź'}
             </button>
           </form>
         ) : (
           /* Success Screen */
-          <div className="w-full rounded-[24px] border border-[#1e1a171f] bg-white p-8 flex flex-col items-center text-center gap-5 shadow-sm relative overflow-hidden">
+          <div className="w-full rounded-[26px] border border-[var(--color-line)] bg-white p-8 flex flex-col items-center text-center gap-5 shadow-sm relative overflow-hidden">
             {/* Checkmark badge with particle burst */}
             <div className="relative flex items-center justify-center my-3">
               {/* Confetti Particles */}
               {burstParticles.map((p, i) => (
                 <span
                   key={i}
-                  className="absolute w-2 h-2 rounded-full pointer-events-none anim-success-burst"
+                  className="absolute w-2.5 h-2.5 rounded-full pointer-events-none anim-success-burst"
                   style={{
-                    backgroundColor: p.color,
+                    backgroundColor: i % 2 === 0 ? 'var(--color-terracotta)' : 'var(--color-khaki-deep)',
                     '--dx': p.dx,
                     '--dy': p.dy,
                     animationDelay: p.delay,
@@ -257,10 +254,10 @@ export const RsvpSection: React.FC = () => {
                 />
               ))}
 
-              {/* Warm amber checkmark bubble */}
-              <div className="w-14 h-14 rounded-full bg-[#c85b28] text-white flex items-center justify-center anim-success-pop shadow-md z-10">
+              {/* Checkmark bubble */}
+              <div className="w-16 h-16 rounded-full bg-[var(--color-terracotta)] text-white flex items-center justify-center anim-success-pop shadow-md z-10">
                 <svg
-                  className="w-7 h-7 stroke-current"
+                  className="w-8 h-8 stroke-current"
                   viewBox="0 0 24 24"
                   fill="none"
                   strokeWidth="3"
@@ -274,14 +271,14 @@ export const RsvpSection: React.FC = () => {
             </div>
 
             {/* Display headline */}
-            <h3 className="font-display text-[26px] font-extrabold uppercase tracking-tight text-[#1e1a17] leading-tight max-w-xs">
+            <h3 className="font-display text-[30px] sm:text-[34px] font-extrabold uppercase tracking-wide text-[var(--color-ink)] leading-tight max-w-sm">
               {attending === 'yes'
                 ? `Dzięki, ${firstName}! Do zobaczenia ${EVENT.dateLabel} 🎉`
                 : `Dzięki za informację, ${firstName}. Będzie nam Ciebie brakować!`}
             </h3>
 
             {/* Subtext */}
-            <p className="text-[13.5px] leading-relaxed text-[#877d70] max-w-xs">
+            <p className="text-[14.5px] sm:text-[15.5px] leading-relaxed text-[var(--color-muted)] max-w-sm">
               {attending === 'yes'
                 ? 'Twoja odpowiedź została zapisana. Nie możemy się doczekać wspólnego świętowania!'
                 : 'Dziękujemy za odpowiedź. Będziemy myślami z Tobą!'}
@@ -290,10 +287,10 @@ export const RsvpSection: React.FC = () => {
             {/* Add to calendar options for attending guests */}
             {attending === 'yes' && (
               <div className="w-full flex flex-col items-center gap-2 pt-2">
-                <div className="w-full grid grid-cols-2 gap-2.5">
+                <div className="w-full grid grid-cols-2 gap-3">
                   <button
                     onClick={downloadIcsFile}
-                    className="w-full rounded-[14px] border border-[#1e1a171f] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#1e1a17] transition-all"
+                    className="w-full rounded-[14px] border border-[var(--color-line)] bg-white hover:bg-neutral-50 active:scale-[0.98] py-3 px-3 flex items-center justify-center gap-2 text-[13.5px] font-bold text-[var(--color-ink)] transition-all shadow-sm"
                   >
                     <span>Apple</span>
                   </button>
@@ -301,7 +298,7 @@ export const RsvpSection: React.FC = () => {
                     href={getGoogleCalendarUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-[14px] border border-[#1e1a171f] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#1e1a17] transition-all"
+                    className="w-full rounded-[14px] border border-[var(--color-line)] bg-white hover:bg-neutral-50 active:scale-[0.98] py-3 px-3 flex items-center justify-center gap-2 text-[13.5px] font-bold text-[var(--color-ink)] transition-all shadow-sm"
                   >
                     <span>Google</span>
                   </a>
