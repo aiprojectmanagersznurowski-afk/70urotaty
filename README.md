@@ -1,144 +1,120 @@
-# 🥂 Jubileusz 70. Urodzin Taty (Toscana Wierzbna)
+# ✉️ Minimalistyczne Zaproszenie Urodzinowe – 70. Urodziny Stanisława
 
-Nowoczesna, luksusowa i interaktywna jednostronicowa aplikacja webowa (Mobile-First) pełniąca rolę zaproszenia na 70. urodziny Taty. Zaprojektowana w szlachetnym toskańskim stylu wizualnym **„Tuscan Prestige & Golden Jubilee”**.
-
----
-
-## 🌟 Główne Funkcjonalności
-
-- **Hero / Intro:** Portret Jubilata z usuniętym tłem, stylizowana cyfra „70” ze złotym akcentem oraz kinowy efekt wygaszania (GSAP ScrollTrigger).
-- **Kiedy i Gdzie:** Karta harmonogramu z bezpośrednim pobieraniem pliku `.ics` dla Apple Calendar oraz linkiem web intent do Google Calendar.
-- **Dojazd & Nawigacja:** Bezpośrednie wywołanie nawigacji Google Maps do Restauracji Toscana oraz instrukcja bezpłatnego parkingu na posesji.
-- **Toskańska Atmosfera & Rodzina:** Sekcja celebrująca włoskie smaki, biesiadowanie, rodzinne więzi i przestrzeń przyjazną dla dzieci (ogród, kącik).
-- **Kinowy Przerywnik:** Pełnoekranowy scroll-reveal (`IMG_5236.JPG`) z toskańskim mottem.
-- **Galeria Wspomnień:** Kolaż fotografii rodzinnych z interaktywnym podglądem pełnoekranowym (Lightbox).
-- **Formularz RSVP:** Elegancki wybór obecności, licznik gości, integracja z arkuszem Google Sheets i wystrzał złotego konfetti.
-- **Muzyka w Tle:** Dyskretna toskańska melodia gitarowa uruchamiana automatycznie po pierwszej interakcji (z pływającym widgetem wyciszenia/odtwarzania).
-- **Architektura Config-First:** Wszystkie dane (daty, adresy, linki, teksty, endpointy) zgromadzone w jednym pliku `src/config/site.ts`.
+Jednostronicowe, minimalistyczne zaproszenie urodzinowe (one-page, mobile-first) zaprojektowane jak elegancka, „redakcyjna” kartka: czysta biel, jeden mocny akcent terakoty, geometryczna typografia displayowa i subtelny ruch sterowany scrollem (GSAP ScrollTrigger).
 
 ---
 
-## 🚀 1. Uruchomienie Lokalne
-
-Wymagany jest Node.js (wersja 18+ lub 20+).
-
-```bash
-# Instalacja zależności
-npm install
-
-# Uruchomienie serwera deweloperskiego
-npm run dev
-```
-
-Aplikacja będzie dostępna pod adresem: `http://localhost:5173`.
+## 📋 Spis treści
+1. [Struktura projektu](#struktura-projektu)
+2. [Konfiguracja danych (`src/config.ts`)](#konfiguracja-danych)
+3. [Podpięcie pod Arkusz Google Sheets (Instrukcja Krok po Kroku)](#podpięcie-pod-arkusz-google-sheets)
+4. [Instrukcja wdrożenia na Netlify](#instrukcja-wdrożenia-na-netlify)
+5. [Uruchomienie lokalne](#uruchomienie-lokalne)
 
 ---
 
-## 📦 2. Build Produkcyjny
+## 🏛️ Struktura projektu
 
-Aby przetestować lub wygenerować wersję produkcyjną:
-
-```bash
-npm run build
-```
-
-Pliki gotowe do wdrożenia znajdą się w katalogu `dist/`.
-
----
-
-## ☁️ 3. Wdrożenie na Netlify / Vercel
-
-Repozytorium GitHub:
-👉 `https://github.com/aiprojectmanagersznurowski-afk/70urotaty`
-
-### Wdrożenie na Netlify:
-1. Zaloguj się na [Netlify](https://app.netlify.com/).
-2. Kliknij **Add new site** → **Import an existing project**.
-3. Wybierz **GitHub** i wskaż repozytorium `aiprojectmanagersznurowski-afk/70urotaty`.
-4. Netlify automatycznie wykryje ustawienia z pliku `netlify.toml`:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
-5. Kliknij **Deploy site**.
-6. Strona posiada wbudowany nagłówek `X-Robots-Tag: noindex, nofollow`, dzięki czemu nie będzie indeksowana przez wyszukiwarki.
+- `src/config.ts` – jedno źródło prawdy: solenizant, wiek (70), data (24.10.2026), lokalizacja (Restauracja & Pizzeria Toscana, Wierzbna), zdjęcia i endpoint RSVP.
+- `src/App.tsx` – główny komponent montujący sekcje w zdefiniowanej kolejności:
+  1. `AudioPlayer` – pływający przycisk muzyki z odblokowaniem dźwięku przy pierwszym geście.
+  2. `HeroSection` – pełnoekranowe intro z portretem w miękkiej masce, ręcznie rysowanymi cyframi SVG „70” i animacją wyjścia GSAP scrub.
+  3. `FullWidthImageSection` – duże zdjęcie o pełnej szerokości wyostrzające się przy scrollu.
+  4. `WhenAndWhereSection` – data, godzina, lokalizacja oraz generatory kalendarza (Apple `.ics` / Google Calendar).
+  5. `DirectionsSection` – bezpośrednia nawigacja do lokalu i na parking z detekcją iOS / Android.
+  6. `KidsSection` – karta kącika dziecięcego w subtelnym khaki.
+  7. `RsvpSection` – formularz z przełącznikiem obecności, stepperami i animowanym ekranem sukcesu (konfetti w terakocie i khaki).
+  8. `GallerySection` – siatka zdjęć z życia solenizanta z dużym kafelkiem panoramicznym.
+  9. `FooterSection` – minimalistyczna stopka z linkiem do restauracji.
+- `src/index.css` – tokeny `@theme`, typografia (Big Shoulders Display + Manrope), keyframes CSS i wsparcie `prefers-reduced-motion`.
+- `src/useScrollReveal.ts` – reużywalny hook GSAP + ScrollTrigger (`y, scale, blur, scrub`).
+- `src/calendar.ts` – pobieranie pliku `.ics` dla Apple i tworzenie linku do Google Calendar.
+- `google-apps-script.js` – gotowy kod backendu do wklejenia w Google Apps Script.
 
 ---
 
-## 📝 4. Konfiguracja Formularza RSVP (Google Sheets Webhook)
+## ⚙️ Konfiguracja danych
 
-Aby odpowiedzi gości zapisywały się automatycznie w Twoim arkuszu Google:
-
-### Krok 1: Utwórz Arkusz Google
-1. Wejdź na [Google Sheets](https://sheets.new) i utwórz nowy arkusz, np. `RSVP 70 Urodziny Taty`.
-2. W pierwszym wierszu (nagłówki) wpisz:
-   - Kolumna A: `Data zgłoszenia`
-   - Kolumna B: `Imię i Nazwisko`
-   - Kolumna C: `Obecność`
-   - Kolumna D: `Dorośli`
-   - Kolumna E: `Dzieci`
-   - Kolumna F: `Wiadomość / Uwagi / Diety`
-
-### Krok 2: Utwórz Google Apps Script
-1. W arkuszu wybierz z górnego menu: **Rozszerzenia** (Extensions) → **Apps Script**.
-2. Usuń domyślny kod i wklej poniższy skrypt:
-
-```javascript
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
-
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
-
-    sheet.appendRow([
-      new Date(),
-      data.name || '',
-      data.attending || '',
-      data.adults || 0,
-      data.children || 0,
-      data.notes || ''
-    ]);
-
-    return ContentService.createTextOutput(JSON.stringify({ status: 'success' }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({ status: 'error', message: error.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
-  }
-}
-```
-
-### Krok 3: Wdróż jako aplikację internetową (Web App)
-1. Kliknij niebieski przycisk **Wdróż** (Deploy) w prawym górnym rogu → **Nowe wdrożenie** (New deployment).
-2. Jako typ wybierz: **Aplikacja internetowa** (Web app).
-3. Ustaw:
-   - **Opis:** `RSVP Webhook`
-   - **Wykonaj jako:** `Ja` (Twoje konto Google)
-   - **Kto ma dostęp:** `Każdy` (Anyone) – *kluczowe, aby goście mogli wysłać formularz bez logowania!*
-4. Kliknij **Wdróż** i zaakceptuj uprawnienia.
-5. Skopiuj wygenerowany **Adres URL aplikacji internetowej** (kończący się na `/exec`).
-
-### Krok 4: Podmień URL w kodzie
-Otwórz plik [src/config/site.ts](src/config/site.ts) i wklej skopiowany URL:
+Wszystkie dane znajdują się w [src/config.ts](src/config.ts):
 
 ```typescript
-rsvp: {
-  deadlineDisplay: "10 października 2026 r.",
-  webhookUrl: "TUTAJ_WKLEJ_SKOPIOWANY_URL_GOOGLE_APPS_SCRIPT",
-  // ...
-}
+export const EVENT = {
+  hostName: "Stanisław",
+  hostFirstNameGen: "Stanisława",
+  age: 70,
+  eventType: "Rodzinny obiad",
+  dateLabel: "24.10.2026",
+  weekdayLabel: "sobota",
+  timeLabel: "16:00",
+  durationLabel: "ok. 16:00–21:00",
+  startUTC: "2026-10-24T14:00:00Z",
+  endUTC:   "2026-10-24T19:00:00Z",
+};
 ```
-
-Zapisz plik, zrób commit i push – gotowe!
 
 ---
 
-## 🎨 Paleta Barw „Tuscan Prestige & Golden Jubilee”
+## 📊 Podpięcie pod Arkusz Google Sheets
 
-- **Krem toskański:** `#FAF8F5`
-- **Głębokie espresso:** `#1E1C1A`
-- **Zieleń cyprysowa:** `#254436`
-- **Złoto jubileuszowe:** `#C5A059` / `#DEC283`
-- **Ciepły piasek:** `#EFECE6`
+Odpowiedzi gości są skonfigurowane do zapisu w dedykowanym arkuszu:
+👉 **[Arkusz Google RSVP](https://docs.google.com/spreadsheets/d/1ouOYi-DBtntQ-BPmBS3rd2_OeT3_UgWMGgnHh93klw8/edit?usp=sharing)**
+
+### Jak uruchomić zapis do arkusza w 2 minuty:
+1. Otwórz arkusz: https://docs.google.com/spreadsheets/d/1ouOYi-DBtntQ-BPmBS3rd2_OeT3_UgWMGgnHh93klw8/edit
+2. W górnym menu kliknij: **Rozszerzenia** (Extensions) → **Apps Script**.
+3. Otwórz plik `google-apps-script.js` z tego projektu, skopiuj całą jego zawartość i wklej do edytora Apps Script (zastępując `function myFunction() {}`).
+4. Kliknij ikonę dyskietki (**Zapisz** / `Cmd+S`).
+5. W prawym górnym rogu kliknij niebieski przycisk **Wdróż** (Deploy) → **Nowe wdrożenie** (New deployment).
+6. Kliknij ikonę koła zębatego obok „Wybierz typ” i wskaż **Aplikacja internetowa** (Web app).
+7. Wypełnij:
+   - **Opis:** `RSVP 70 Stanisław`
+   - **Wykonaj jako:** `Ja (<Twój email>)`
+   - **Kto ma dostęp:** `Każdy` (**Anyone**) — *to gwarantuje, że goście wyślą zgłoszenie bez logowania*.
+8. Kliknij **Wdróż** i zatwierdź uprawnienia do edycji arkusza.
+9. Skopiuj wygenerowany **Adres URL aplikacji internetowej** (kończący się na `/exec`).
+10. Wklej ten adres w [src/config.ts](src/config.ts) jako `RSVP_ENDPOINT`:
+    ```typescript
+    export const RSVP_ENDPOINT = "https://script.google.com/macros/s/TWÓJ_ID/exec";
+    ```
+11. Zapisz plik i zdeployuj stronę. Odpowiedzi od razu zaczną pojawiać się w arkuszu!
+
+> **Zabezpieczenie:** Strona posiada wbudowaną kopię zapasową odpowiedzi w `localStorage`, więc nawet przy problemach z siecią żadne zgłoszenie nie przepadnie.
+
+---
+
+## 🚀 Instrukcja wdrożenia na Netlify
+
+Projekt jest w 100% zoptymalizowany pod kątem darmowego hostingu na Netlify (statyczny build Vite).
+
+### Metoda 1: Przez Git (Zalecana)
+1. Zaloguj się na [Netlify](https://app.netlify.com/).
+2. Kliknij **Add new site** → **Import an existing project**.
+3. Wybierz dostawcę **GitHub** i wskaż repozytorium:
+   `https://github.com/aiprojectmanagersznurowski-afk/70urotaty`
+4. Netlify automatycznie uzupełni:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+5. Kliknij **Deploy site**. Strona zostanie zbudowana i opublikowana pod bezpłatną domeną (np. `twoja-nazwa.netlify.app`).
+
+### Metoda 2: Przeciągnij i upuść (Netlify Drop)
+1. Uruchom w terminalu:
+   ```bash
+   npm run build
+   ```
+2. Wejdź na [Netlify Drop](https://app.netlify.com/drop).
+3. Przeciągnij i upuść folder `dist` z projektu do okna przeglądarki. Strona będzie online w 10 sekund!
+
+---
+
+## 💻 Uruchomienie lokalne
+
+```bash
+# Instalacja paczek
+npm install
+
+# Start lokalnego serwera Vite
+npm run dev
+
+# Kompilacja i sprawdzenie typów
+npm run build
+```

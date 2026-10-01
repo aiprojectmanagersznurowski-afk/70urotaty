@@ -1,50 +1,46 @@
 import React from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { EventDetails } from './components/EventDetails';
-import { Directions } from './components/Directions';
-import { Atmosphere } from './components/Atmosphere';
-import { CinematicBreak } from './components/CinematicBreak';
-import { Gallery } from './components/Gallery';
-import { RsvpForm } from './components/RsvpForm';
-import { Footer } from './components/Footer';
 import { AudioPlayer } from './components/AudioPlayer';
+import { HeroSection } from './components/HeroSection';
+import { FullWidthImageSection } from './components/FullWidthImageSection';
+import { WhenAndWhereSection } from './components/WhenAndWhereSection';
+import { DirectionsSection } from './components/DirectionsSection';
+import { KidsSection } from './components/KidsSection';
+import { RsvpSection } from './components/RsvpSection';
+import { GallerySection } from './components/GallerySection';
+import { FooterSection } from './components/FooterSection';
 
 export const App: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-[#FAF8F5] text-[#1E1C1A] flex flex-col items-center selection:bg-[#C89D52]/25 selection:text-[#0E2646]">
-      {/* Navigation Header */}
-      <Navbar />
+    <div className="w-full min-h-svh bg-white text-[#211d1a] flex flex-col items-center">
+      {/* 1. Odtwarzacz muzyki (pływający przycisk w prawym dolnym rogu) */}
+      <AudioPlayer />
 
-      {/* Main Content Flow */}
+      {/* Główna kolumna treści (mobile-first, wycentrowana na desktopie) */}
       <main className="w-full flex flex-col items-center">
-        {/* 1. Hero Section */}
-        <Hero />
+        {/* 2. Hero (intro, pełny ekran) */}
+        <HeroSection />
 
-        {/* 2. When & Where Details */}
-        <EventDetails />
+        {/* 3. Zdjęcie pełnej szerokości */}
+        <FullWidthImageSection />
 
-        {/* 3. Directions & On-site Parking */}
-        <Directions />
+        {/* 4. Kiedy i gdzie + dodaj do kalendarza */}
+        <WhenAndWhereSection />
 
-        {/* 4. Atmosphere & Family Gathering */}
-        <Atmosphere />
+        {/* 5. Dojazd (nawigacja) */}
+        <DirectionsSection />
 
-        {/* 5. Full-width Cinematic Break */}
-        <CinematicBreak />
+        {/* 6. Dla najmłodszych */}
+        <KidsSection />
 
-        {/* 6. Cinematic Memories Gallery */}
-        <Gallery />
+        {/* 7. RSVP (formularz z Google Sheets) */}
+        <RsvpSection />
 
-        {/* 7. RSVP Confirmation Form */}
-        <RsvpForm />
+        {/* 8. Galeria zdjęć */}
+        <GallerySection />
       </main>
 
-      {/* Footer */}
-      <Footer />
-
-      {/* Floating Ambient Audio Player */}
-      <AudioPlayer />
+      {/* 9. Stopka */}
+      <FooterSection />
     </div>
   );
 };

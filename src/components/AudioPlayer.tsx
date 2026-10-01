@@ -1,138 +1,97 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
-import { siteConfig } from '../config/site';
+import { Volume2, VolumeX } from 'lucide-react';
+import { MUSIC } from '../config';
 
 export const AudioPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const audio = new Audio(siteConfig.media.audio.src);
+    const audio = new Audio(MUSIC.src);
     audio.loop = true;
-    audio.volume = siteConfig.media.audio.defaultVolume;
+    audio.preload = 'auto';
+    audio.volume = 0.55;
     audioRef.current = audio;
 
-    // Handle user interaction to unlock audio
-    const handleFirstInteraction = () => {
-      if (hasInteracted) return;
-      setHasInteracted(true);
+    // Try autoplay
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        // Expected browser autoplay policy block
+        setIsPlaying(false);
+      });
 
-      if (audioRef.current) {
+    // Unlock audio on first user gesture
+    const unlockAudio = () => {
+      if (audioRef.current && audioRef.current.paused) {
         audioRef.current
           .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch(() => {
-            // Autoplay might still be blocked, wait for user click on button
-            setIsPlaying(false);
-          });
+          .then(() => setIsPlaying(true))
+          .catch(() => {});
       }
-
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
+      cleanupListeners();
     };
 
-    window.addEventListener('click', handleFirstInteraction, { once: true });
-    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
-    window.addEventListener('scroll', handleFirstInteraction, { once: true });
+    const cleanupListeners = () => {
+      window.removeEventListener('pointerdown', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+      window.removeEventListener('scroll', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
+    };
+
+    window.addEventListener('pointerdown', unlockAudio, { once: true, passive: true });
+    window.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
+    window.addEventListener('scroll', unlockAudio, { once: true, passive: true });
+    window.addEventListener('keydown', unlockAudio, { once: true, passive: true });
 
     return () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
+      cleanupListeners();
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
     };
-  }, [hasInteracted]);
+  }, []);
 
-  const togglePlay = () => {
+  const handleToggle = () => {
     if (!audioRef.current) return;
 
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
+    if (audioRef.current.paused) {
       audioRef.current
         .play()
         .then(() => {
           setIsPlaying(true);
           setIsMuted(false);
+          if (audioRef.current) audioRef.current.muted = false;
         })
-        .catch((err) => {
-          console.warn('Audio play request failed:', err);
-        });
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!audioRef.current) return;
-
-    if (isMuted) {
-      audioRef.current.muted = false;
-      setIsMuted(false);
-      if (!isPlaying) {
-        audioRef.current.play().then(() => setIsPlaying(true));
-      }
+        .catch(() => {});
     } else {
-      audioRef.current.muted = true;
-      setIsMuted(true);
+      const nextMuted = !isMuted;
+      audioRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
     }
   };
+
+  const isActuallyAudible = isPlaying && !isMuted;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex items-center">
-      <div className="group relative flex items-center">
-        {/* Floating Player pill */}
-        <button
-          onClick={togglePlay}
-          aria-label={isPlaying ? 'Wycisz muzykę' : 'Włącz muzykę w tle'}
-          className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-full border shadow-lg backdrop-blur-md transition-all duration-300 ${
-            isPlaying && !isMuted
-              ? 'bg-[#0E2646]/90 border-[#C89D52]/40 text-[#FAF8F5] gold-glow-marine hover:bg-[#0E2646]'
-              : 'bg-[#FAF8F5]/90 border-[#1E1C1A]/15 text-[#1E1C1A]/80 hover:bg-[#FAF8F5]'
-          }`}
-        >
-          {isPlaying && !isMuted ? (
-            <div className="flex items-center gap-1 h-3.5 w-4 justify-center">
-              <span className="w-0.5 bg-[#C89D52] h-3.5 animate-[pulse_0.8s_ease-in-out_infinite]" />
-              <span className="w-0.5 bg-[#C89D52] h-2.5 animate-[pulse_0.6s_ease-in-out_infinite_0.2s]" />
-              <span className="w-0.5 bg-[#C89D52] h-3 animate-[pulse_0.7s_ease-in-out_infinite_0.4s]" />
-            </div>
-          ) : (
-            <Music className="w-4 h-4 text-[#C89D52]" />
-          )}
-
-          <span className="text-xs font-medium tracking-wide">
-            {isPlaying && !isMuted ? 'Muzyka gra' : 'Muzyka'}
-          </span>
-
-          <span
-            onClick={toggleMute}
-            className="p-0.5 rounded hover:bg-white/10 transition-colors"
-            title={isMuted ? 'Wyłącz wyciszenie' : 'Wycisz'}
-          >
-            {isPlaying && !isMuted ? (
-              <Volume2 className="w-3.5 h-3.5 text-[#C89D52]" />
-            ) : (
-              <VolumeX className="w-3.5 h-3.5 text-stone-400" />
-            )}
-          </span>
-        </button>
-
-        {/* Hover / Tooltip info */}
-        <div className="pointer-events-none absolute right-0 bottom-full mb-2 hidden group-hover:block opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <div className="bg-[#0E2646] text-[#FAF8F5] text-[11px] rounded-lg px-2.5 py-1.5 whitespace-nowrap shadow-md border border-[#C89D52]/30">
-            {isPlaying && !isMuted ? 'Kliknij, aby zatrzymać' : 'Klimatyczna muzyka w tle'}
-          </div>
-        </div>
-      </div>
+    <div className="fixed bottom-4 right-4 z-50 safe-pb">
+      <button
+        onClick={handleToggle}
+        aria-label={isActuallyAudible ? 'Wycisz muzykę' : 'Włącz muzykę'}
+        title={isActuallyAudible ? 'Wycisz muzykę' : 'Włącz muzykę w tle'}
+        className="w-10 h-10 rounded-full bg-white/85 backdrop-blur-md border border-[#211d1a24] shadow-sm flex items-center justify-center text-[#211d1a] transition-transform duration-150 active:scale-90 hover:border-[#b8552f]/40"
+      >
+        {isActuallyAudible ? (
+          <Volume2 className="w-4 h-4 text-[#b8552f]" />
+        ) : (
+          <VolumeX className="w-4 h-4 text-[#8a8172]" />
+        )}
+      </button>
     </div>
   );
 };
