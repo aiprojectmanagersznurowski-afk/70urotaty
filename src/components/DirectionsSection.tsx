@@ -28,7 +28,7 @@ export const DirectionsSection: React.FC = () => {
     <section className="w-full px-6 py-14 flex flex-col items-center bg-white">
       <div ref={revealRef} className="w-full max-w-md flex flex-col items-center gap-5">
         {/* Eyebrow */}
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8c3e20]">
+        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a3516]">
           Dojazd
         </span>
 
@@ -39,7 +39,7 @@ export const DirectionsSection: React.FC = () => {
             href={getNavigationUrl(VENUE.lat, VENUE.lng)}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full rounded-[18px] bg-[#b8552f] hover:bg-[#8c3e20] active:scale-[0.98] text-white px-5 py-4 flex items-center justify-between transition-all shadow-sm"
+            className="w-full rounded-[18px] bg-[#c85b28] hover:bg-[#8a3516] active:scale-[0.98] text-white px-5 py-4 flex items-center justify-between transition-all shadow-sm"
           >
             <div className="flex flex-col text-left">
               <span className="text-[15px] font-bold">Nawiguj do restauracji</span>
@@ -53,18 +53,18 @@ export const DirectionsSection: React.FC = () => {
             href={getNavigationUrl(PARKING.lat, PARKING.lng)}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full rounded-[18px] bg-white border border-[#211d1a24] hover:bg-neutral-50 active:scale-[0.98] text-[#211d1a] px-5 py-4 flex items-center justify-between transition-all"
+            className="w-full rounded-[18px] bg-white border border-[#1e1a171f] hover:bg-neutral-50 active:scale-[0.98] text-[#1e1a17] px-5 py-4 flex items-center justify-between transition-all"
           >
             <div className="flex flex-col text-left">
               <span className="text-[15px] font-bold">Nawiguj na parking</span>
-              <span className="text-[12.5px] text-[#8a8172] mt-0.5">{PARKING.name}</span>
+              <span className="text-[12.5px] text-[#877d70] mt-0.5">{PARKING.name}</span>
             </div>
-            <ArrowUpRight className="w-5 h-5 text-[#8a8172] shrink-0 stroke-[2.5]" />
+            <ArrowUpRight className="w-5 h-5 text-[#877d70] shrink-0 stroke-[2.5]" />
           </a>
         </div>
 
         {/* Tip text */}
-        <p className="text-[14px] leading-relaxed text-[#8a8172] text-center max-w-sm mt-1">
+        <p className="text-[14px] leading-relaxed text-[#877d70] text-center max-w-sm mt-1">
           {PARKING.tip}
         </p>
       </div>

@@ -8,11 +8,11 @@ export const FooterSection: React.FC = () => {
         href={VENUE.website}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-[12.5px] font-semibold text-[#8a8172] hover:text-[#b8552f] underline underline-offset-4 transition-colors"
+        className="text-[12.5px] font-semibold text-[#877d70] hover:text-[#c85b28] underline underline-offset-4 transition-colors"
       >
         {VENUE.name} →
       </a>
-      <span className="font-['Big_Shoulders_Display'] text-[13px] font-extrabold uppercase tracking-[0.2em] text-[#8a8172] mt-1">
+      <span className="font-display text-[13px] font-extrabold uppercase tracking-[0.2em] text-[#877d70] mt-1">
         Do zobaczenia
       </span>
     </footer>

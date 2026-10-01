@@ -3,28 +3,28 @@
 @theme {
   --color-bg: #ffffff;
   --color-paper: #ffffff;
-  --color-ink: #211d1a;
-  --color-muted: #8a8172;
-  --color-terracotta: #b8552f;
-  --color-terracotta-deep: #8c3e20;
-  --color-khaki: #d8ccac;
-  --color-khaki-deep: #b7a87c;
-  --color-line: rgba(33, 29, 26, 0.14);
+  --color-ink: #1e1a17;
+  --color-muted: #877d70;
+  --color-terracotta: #c85b28;
+  --color-terracotta-deep: #8a3516;
+  --color-khaki: #e8dcb8;
+  --color-khaki-deep: #b8a26c;
+  --color-line: rgba(30, 26, 23, 0.12);
 
-  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-display: 'Big Shoulders Text', 'Big Shoulders Display', sans-serif;
   --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 :root {
   --color-bg: #ffffff;
   --color-paper: #ffffff;
-  --color-ink: #211d1a;
-  --color-muted: #8a8172;
-  --color-terracotta: #b8552f;
-  --color-terracotta-deep: #8c3e20;
-  --color-khaki: #d8ccac;
-  --color-khaki-deep: #b7a87c;
-  --color-line: rgba(33, 29, 26, 0.14);
+  --color-ink: #1e1a17;
+  --color-muted: #877d70;
+  --color-terracotta: #c85b28;
+  --color-terracotta-deep: #8a3516;
+  --color-khaki: #e8dcb8;
+  --color-khaki-deep: #b8a26c;
+  --color-line: rgba(30, 26, 23, 0.12);
 }
 
 html {
@@ -192,10 +192,10 @@ body {
   animation: success-burst 0.8s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
 }
 
-/* Portrait mask definition as per prompt */
+/* Portrait mask definition optimized for celebration photo with cake */
 .portrait-soft-mask {
-  mask-image: radial-gradient(66% 72% at 50% 42%, #000000 38%, transparent 100%);
-  -webkit-mask-image: radial-gradient(66% 72% at 50% 42%, #000000 38%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 82% at 50% 46%, #000000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 46%, #000000 60%, transparent 100%);
 }
 
 /* Accessible focus ring */

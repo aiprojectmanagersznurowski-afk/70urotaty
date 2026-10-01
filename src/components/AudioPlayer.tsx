@@ -84,12 +84,12 @@ export const AudioPlayer: React.FC = () => {
         onClick={handleToggle}
         aria-label={isActuallyAudible ? 'Wycisz muzykę' : 'Włącz muzykę'}
         title={isActuallyAudible ? 'Wycisz muzykę' : 'Włącz muzykę w tle'}
-        className="w-10 h-10 rounded-full bg-white/85 backdrop-blur-md border border-[#211d1a24] shadow-sm flex items-center justify-center text-[#211d1a] transition-transform duration-150 active:scale-90 hover:border-[#b8552f]/40"
+        className="w-10 h-10 rounded-full bg-white/85 backdrop-blur-md border border-[#1e1a171f] shadow-sm flex items-center justify-center text-[#1e1a17] transition-transform duration-150 active:scale-90 hover:border-[#c85b28]/40"
       >
         {isActuallyAudible ? (
-          <Volume2 className="w-4 h-4 text-[#b8552f]" />
+          <Volume2 className="w-4 h-4 text-[#c85b28]" />
         ) : (
-          <VolumeX className="w-4 h-4 text-[#8a8172]" />
+          <VolumeX className="w-4 h-4 text-[#877d70]" />
         )}
       </button>
     </div>

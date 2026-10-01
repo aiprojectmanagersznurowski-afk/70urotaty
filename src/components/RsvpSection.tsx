@@ -74,32 +74,32 @@ export const RsvpSection: React.FC = () => {
 
   // Fixed burst particles configuration for reliable rendering
   const burstParticles = [
-    { dx: '-65px', dy: '-70px', delay: '0.02s', color: '#b8552f' },
-    { dx: '70px', dy: '-60px', delay: '0.04s', color: '#b7a87c' },
-    { dx: '-85px', dy: '15px', delay: '0.06s', color: '#b7a87c' },
-    { dx: '80px', dy: '25px', delay: '0.03s', color: '#b8552f' },
-    { dx: '-45px', dy: '80px', delay: '0.05s', color: '#b8552f' },
-    { dx: '55px', dy: '75px', delay: '0.01s', color: '#b7a87c' },
-    { dx: '0px', dy: '-85px', delay: '0.07s', color: '#b8552f' },
-    { dx: '-30px', dy: '-80px', delay: '0.08s', color: '#b7a87c' },
-    { dx: '35px', dy: '-75px', delay: '0.03s', color: '#b8552f' },
-    { dx: '-80px', dy: '-25px', delay: '0.09s', color: '#b8552f' },
-    { dx: '75px', dy: '-20px', delay: '0.05s', color: '#b7a87c' },
-    { dx: '-70px', dy: '55px', delay: '0.04s', color: '#b7a87c' },
-    { dx: '65px', dy: '60px', delay: '0.06s', color: '#b8552f' },
-    { dx: '0px', dy: '85px', delay: '0.02s', color: '#b7a87c' },
+    { dx: '-65px', dy: '-70px', delay: '0.02s', color: '#c85b28' },
+    { dx: '70px', dy: '-60px', delay: '0.04s', color: '#b8a26c' },
+    { dx: '-85px', dy: '15px', delay: '0.06s', color: '#b8a26c' },
+    { dx: '80px', dy: '25px', delay: '0.03s', color: '#c85b28' },
+    { dx: '-45px', dy: '80px', delay: '0.05s', color: '#c85b28' },
+    { dx: '55px', dy: '75px', delay: '0.01s', color: '#b8a26c' },
+    { dx: '0px', dy: '-85px', delay: '0.07s', color: '#c85b28' },
+    { dx: '-30px', dy: '-80px', delay: '0.08s', color: '#b8a26c' },
+    { dx: '35px', dy: '-75px', delay: '0.03s', color: '#c85b28' },
+    { dx: '-80px', dy: '-25px', delay: '0.09s', color: '#c85b28' },
+    { dx: '75px', dy: '-20px', delay: '0.05s', color: '#b8a26c' },
+    { dx: '-70px', dy: '55px', delay: '0.04s', color: '#b8a26c' },
+    { dx: '65px', dy: '60px', delay: '0.06s', color: '#c85b28' },
+    { dx: '0px', dy: '85px', delay: '0.02s', color: '#b8a26c' },
   ];
 
   return (
     <section className="w-full px-6 py-14 flex flex-col items-center bg-white" id="rsvp">
       <div ref={revealRef} className="w-full max-w-md flex flex-col items-center gap-5">
         {/* Eyebrow */}
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8c3e20]">
+        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a3516]">
           Potwierdź obecność
         </span>
 
         {/* Heading */}
-        <h2 className="font-['Big_Shoulders_Display'] text-[28px] sm:text-[32px] font-extrabold uppercase tracking-tight text-[#211d1a] text-center -mt-1">
+        <h2 className="font-display text-[28px] sm:text-[32px] font-extrabold uppercase tracking-tight text-[#1e1a17] text-center -mt-1">
           Będziesz z nami?
         </h2>
 
@@ -107,7 +107,7 @@ export const RsvpSection: React.FC = () => {
         {!isSuccess ? (
           <form
             onSubmit={handleSubmit}
-            className="w-full rounded-[24px] border border-[#211d1a24] bg-white p-6 flex flex-col gap-4 shadow-sm"
+            className="w-full rounded-[24px] border border-[#1e1a171f] bg-white p-6 flex flex-col gap-4 shadow-sm"
           >
             {/* 1. Attending Segment Choice */}
             <div className="grid grid-cols-2 gap-2.5">
@@ -116,8 +116,8 @@ export const RsvpSection: React.FC = () => {
                 onClick={() => setAttending('yes')}
                 className={`py-3.5 px-3 rounded-[14px] text-[14px] font-bold transition-all active:scale-[0.98] ${
                   attending === 'yes'
-                    ? 'bg-[#b8552f] text-white shadow-sm'
-                    : 'bg-white border border-[#211d1a24] text-[#211d1a] hover:bg-neutral-50'
+                    ? 'bg-[#c85b28] text-white shadow-sm'
+                    : 'bg-white border border-[#1e1a171f] text-[#1e1a17] hover:bg-neutral-50'
                 }`}
               >
                 Będę 🎉
@@ -128,8 +128,8 @@ export const RsvpSection: React.FC = () => {
                 onClick={() => setAttending('no')}
                 className={`py-3.5 px-3 rounded-[14px] text-[14px] font-bold transition-all active:scale-[0.98] ${
                   attending === 'no'
-                    ? 'bg-[#b8552f] text-white shadow-sm'
-                    : 'bg-white border border-[#211d1a24] text-[#211d1a] hover:bg-neutral-50'
+                    ? 'bg-[#c85b28] text-white shadow-sm'
+                    : 'bg-white border border-[#1e1a171f] text-[#1e1a17] hover:bg-neutral-50'
                 }`}
               >
                 Nie dam rady
@@ -138,7 +138,7 @@ export const RsvpSection: React.FC = () => {
 
             {/* 2. Full Name Input */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="rsvp-name" className="text-[12.5px] font-bold text-[#211d1a]">
+              <label htmlFor="rsvp-name" className="text-[12.5px] font-bold text-[#1e1a17]">
                 Imię i nazwisko
               </label>
               <input
@@ -148,7 +148,7 @@ export const RsvpSection: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="np. Ciocia Basia"
-                className="w-full rounded-[13px] border border-[#211d1a24] bg-white px-4 py-3 text-[14px] text-[#211d1a] placeholder:text-[#8a8172]/60 focus:border-[#b8552f] focus:outline-none transition-colors"
+                className="w-full rounded-[13px] border border-[#1e1a171f] bg-white px-4 py-3 text-[14px] text-[#1e1a17] placeholder:text-[#877d70]/60 focus:border-[#c85b28] focus:outline-none transition-colors"
               />
             </div>
 
@@ -156,24 +156,24 @@ export const RsvpSection: React.FC = () => {
             {attending === 'yes' && (
               <div className="grid grid-cols-2 gap-3 pt-1 transition-all">
                 {/* Adults Stepper */}
-                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#211d1a24] bg-white">
-                  <span className="text-[12px] font-bold text-[#211d1a]">Dorośli</span>
+                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#1e1a171f] bg-white">
+                  <span className="text-[12px] font-bold text-[#1e1a17]">Dorośli</span>
                   <div className="flex items-center justify-between mt-1">
                     <button
                       type="button"
                       onClick={() => setAdults((prev) => Math.max(1, prev - 1))}
                       disabled={adults <= 1}
                       aria-label="Mniej: Dorośli"
-                      className="w-7 h-7 rounded-full border border-[#211d1a24] flex items-center justify-center text-[#211d1a] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
+                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="text-[15px] font-bold text-[#211d1a]">{adults}</span>
+                    <span className="text-[15px] font-bold text-[#1e1a17]">{adults}</span>
                     <button
                       type="button"
                       onClick={() => setAdults((prev) => prev + 1)}
                       aria-label="Więcej: Dorośli"
-                      className="w-7 h-7 rounded-full border border-[#211d1a24] flex items-center justify-center text-[#211d1a] active:scale-90 transition-transform"
+                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] active:scale-90 transition-transform"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -181,24 +181,24 @@ export const RsvpSection: React.FC = () => {
                 </div>
 
                 {/* Kids Stepper */}
-                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#211d1a24] bg-white">
-                  <span className="text-[12px] font-bold text-[#211d1a]">Dzieci</span>
+                <div className="flex flex-col gap-1.5 p-3 rounded-[14px] border border-[#1e1a171f] bg-white">
+                  <span className="text-[12px] font-bold text-[#1e1a17]">Dzieci</span>
                   <div className="flex items-center justify-between mt-1">
                     <button
                       type="button"
                       onClick={() => setKids((prev) => Math.max(0, prev - 1))}
                       disabled={kids <= 0}
                       aria-label="Mniej: Dzieci"
-                      className="w-7 h-7 rounded-full border border-[#211d1a24] flex items-center justify-center text-[#211d1a] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
+                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-transform"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="text-[15px] font-bold text-[#211d1a]">{kids}</span>
+                    <span className="text-[15px] font-bold text-[#1e1a17]">{kids}</span>
                     <button
                       type="button"
                       onClick={() => setKids((prev) => prev + 1)}
                       aria-label="Więcej: Dzieci"
-                      className="w-7 h-7 rounded-full border border-[#211d1a24] flex items-center justify-center text-[#211d1a] active:scale-90 transition-transform"
+                      className="w-7 h-7 rounded-full border border-[#1e1a171f] flex items-center justify-center text-[#1e1a17] active:scale-90 transition-transform"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -209,8 +209,8 @@ export const RsvpSection: React.FC = () => {
 
             {/* 4. Notes textarea */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="rsvp-notes" className="text-[12.5px] font-bold text-[#211d1a]">
-                Uwagi <span className="font-normal text-[#8a8172]">(opcjonalnie)</span>
+              <label htmlFor="rsvp-notes" className="text-[12.5px] font-bold text-[#1e1a17]">
+                Uwagi <span className="font-normal text-[#877d70]">(opcjonalnie)</span>
               </label>
               <textarea
                 id="rsvp-notes"
@@ -218,13 +218,13 @@ export const RsvpSection: React.FC = () => {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="np. dieta, alergie"
-                className="w-full rounded-[13px] border border-[#211d1a24] bg-white px-4 py-2.5 text-[14px] text-[#211d1a] placeholder:text-[#8a8172]/60 focus:border-[#b8552f] focus:outline-none resize-none transition-colors"
+                className="w-full rounded-[13px] border border-[#1e1a171f] bg-white px-4 py-2.5 text-[14px] text-[#1e1a17] placeholder:text-[#877d70]/60 focus:border-[#c85b28] focus:outline-none resize-none transition-colors"
               />
             </div>
 
             {/* Error Message */}
             {errorMessage && (
-              <p className="text-[12.5px] text-[#b8552f] leading-snug">
+              <p className="text-[12.5px] text-[#c85b28] leading-snug">
                 {errorMessage}
               </p>
             )}
@@ -233,14 +233,14 @@ export const RsvpSection: React.FC = () => {
             <button
               type="submit"
               disabled={!isFormValid || isSubmitting}
-              className="w-full rounded-[14px] bg-[#211d1a] hover:bg-[#b8552f] disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98] text-white py-3.5 px-4 text-[14px] font-bold transition-all mt-1"
+              className="w-full rounded-[14px] bg-[#1e1a17] hover:bg-[#c85b28] disabled:opacity-40 disabled:pointer-events-none active:scale-[0.98] text-white py-3.5 px-4 text-[14px] font-bold transition-all mt-1"
             >
               {isSubmitting ? 'Wysyłanie…' : 'Wyślij odpowiedź'}
             </button>
           </form>
         ) : (
           /* Success Screen */
-          <div className="w-full rounded-[24px] border border-[#211d1a24] bg-white p-8 flex flex-col items-center text-center gap-5 shadow-sm relative overflow-hidden">
+          <div className="w-full rounded-[24px] border border-[#1e1a171f] bg-white p-8 flex flex-col items-center text-center gap-5 shadow-sm relative overflow-hidden">
             {/* Checkmark badge with particle burst */}
             <div className="relative flex items-center justify-center my-3">
               {/* Confetti Particles */}
@@ -257,8 +257,8 @@ export const RsvpSection: React.FC = () => {
                 />
               ))}
 
-              {/* Terracotta checkmark bubble */}
-              <div className="w-14 h-14 rounded-full bg-[#b8552f] text-white flex items-center justify-center anim-success-pop shadow-md z-10">
+              {/* Warm amber checkmark bubble */}
+              <div className="w-14 h-14 rounded-full bg-[#c85b28] text-white flex items-center justify-center anim-success-pop shadow-md z-10">
                 <svg
                   className="w-7 h-7 stroke-current"
                   viewBox="0 0 24 24"
@@ -274,14 +274,14 @@ export const RsvpSection: React.FC = () => {
             </div>
 
             {/* Display headline */}
-            <h3 className="font-['Big_Shoulders_Display'] text-[26px] font-extrabold uppercase tracking-tight text-[#211d1a] leading-tight max-w-xs">
+            <h3 className="font-display text-[26px] font-extrabold uppercase tracking-tight text-[#1e1a17] leading-tight max-w-xs">
               {attending === 'yes'
                 ? `Dzięki, ${firstName}! Do zobaczenia ${EVENT.dateLabel} 🎉`
                 : `Dzięki za informację, ${firstName}. Będzie nam Ciebie brakować!`}
             </h3>
 
             {/* Subtext */}
-            <p className="text-[13.5px] leading-relaxed text-[#8a8172] max-w-xs">
+            <p className="text-[13.5px] leading-relaxed text-[#877d70] max-w-xs">
               {attending === 'yes'
                 ? 'Twoja odpowiedź została zapisana. Nie możemy się doczekać wspólnego świętowania!'
                 : 'Dziękujemy za odpowiedź. Będziemy myślami z Tobą!'}
@@ -293,7 +293,7 @@ export const RsvpSection: React.FC = () => {
                 <div className="w-full grid grid-cols-2 gap-2.5">
                   <button
                     onClick={downloadIcsFile}
-                    className="w-full rounded-[14px] border border-[#211d1a24] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#211d1a] transition-all"
+                    className="w-full rounded-[14px] border border-[#1e1a171f] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#1e1a17] transition-all"
                   >
                     <span>Apple</span>
                   </button>
@@ -301,7 +301,7 @@ export const RsvpSection: React.FC = () => {
                     href={getGoogleCalendarUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full rounded-[14px] border border-[#211d1a24] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#211d1a] transition-all"
+                    className="w-full rounded-[14px] border border-[#1e1a171f] bg-white hover:bg-neutral-50 active:scale-[0.98] py-2.5 px-3 flex items-center justify-center gap-2 text-[12.5px] font-bold text-[#1e1a17] transition-all"
                   >
                     <span>Google</span>
                   </a>

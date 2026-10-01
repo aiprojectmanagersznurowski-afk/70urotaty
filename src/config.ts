@@ -54,15 +54,15 @@ export interface GalleryPhoto {
 }
 
 export const PHOTOS = {
-  portrait: "/photos/tata-beach-cutout.png",
-  hero: "/photos/IMG_5236.JPG",
+  portrait: "/photos/tata-portrait-7654.png",
+  hero: "/photos/IMG_9176.jpg",
   gallery: [
+    { src: "/photos/IMG_5236.JPG", alt: "W gronie najbliższych przy wspólnym stole" },
     { src: "/photos/IMG_2800.JPG", alt: "Uśmiechnięty Stanisław w podróży" },
     { src: "/photos/20201108_115158.JPG", alt: "Jesienny spacer i chwila wytchnienia" },
     { src: "/photos/20191012_134804.JPG", alt: "Rodzinne chwile i spotkania" },
     { src: "/photos/IMG_9245.jpg", alt: "Wspomnienia z wakacyjnych wyjazdów" },
     { src: "/photos/IMG_9207.jpg", alt: "Radość i pogoda ducha" },
-    { src: "/photos/IMG_7654.jpg", alt: "Chwila refleksji i uśmiechu" },
-    { src: "/photos/tata-beach-panorama.jpg", alt: "Widok na morze i klify", wide: true },
+    { src: "/photos/tata-beach-panorama.jpg", alt: "Słoneczny dzień nad morzem i klify", wide: true },
   ] as GalleryPhoto[],
 };

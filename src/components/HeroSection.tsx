@@ -45,37 +45,37 @@ export const HeroSection: React.FC = () => {
     >
       {/* 1. Eyebrow bar */}
       <div className="w-full max-w-md flex items-center justify-between anim-rise-eyebrow text-[11px] font-bold tracking-[0.14em] uppercase">
-        <span className="text-[#8c3e20]">{EVENT.eventType}</span>
-        <span className="text-[#8a8172]">{VENUE.shortName}</span>
+        <span className="text-[#8a3516]">{EVENT.eventType}</span>
+        <span className="text-[#877d70]">{VENUE.shortName}</span>
       </div>
 
       {/* 2. Main Center Hero Content */}
       <div
         ref={contentRef}
-        className="w-full max-w-md flex flex-col items-center text-center my-auto py-4"
+        className="w-full max-w-md flex flex-col items-center text-center my-auto py-3"
       >
-        {/* Portrait with soft mask & terracotta blur underlay */}
-        <div className="relative w-[132px] h-[152px] mb-5 flex items-center justify-center">
+        {/* Portrait with soft mask & warm amber blur underlay */}
+        <div className="relative w-[160px] sm:w-[185px] h-[180px] sm:h-[205px] mb-4 flex items-center justify-center">
           {/* Underlying warm glow */}
           <div
             className="absolute inset-0 rounded-full pointer-events-none"
             style={{
-              background: 'radial-gradient(closest-side, #b8552f 0%, transparent 72%)',
+              background: 'radial-gradient(closest-side, #c85b28 0%, transparent 72%)',
               filter: 'blur(34px)',
-              opacity: 0.55,
+              opacity: 0.5,
               transform: 'scale(1.35)',
             }}
           />
           {/* Cutout portrait with soft radial mask */}
           <img
             src={PHOTOS.portrait}
-            alt={EVENT.hostName}
-            className="w-full h-full object-cover object-top portrait-soft-mask anim-portrait-in relative z-10"
+            alt={`${EVENT.hostName} z tortem urodzinowym`}
+            className="w-full h-full object-contain object-bottom portrait-soft-mask anim-portrait-in relative z-10"
           />
         </div>
 
         {/* Eyebrow intro: "ZAPRASZAM NA" */}
-        <span className="font-['Big_Shoulders_Display'] text-[13px] uppercase tracking-[0.3em] font-extrabold text-[#8a8172] mb-1.5 anim-reveal-intro">
+        <span className="font-display text-[13px] uppercase tracking-[0.3em] font-extrabold text-[#877d70] mb-1 anim-reveal-intro">
           Zapraszam na
         </span>
 
@@ -91,7 +91,7 @@ export const HeroSection: React.FC = () => {
               <path
                 d="M 12 14 H 64 L 24 122"
                 fill="none"
-                stroke="#211d1a"
+                stroke="#1e1a17"
                 strokeWidth="16"
                 strokeLinecap="square"
                 strokeLinejoin="miter"
@@ -99,7 +99,7 @@ export const HeroSection: React.FC = () => {
             </svg>
           </div>
 
-          {/* Digit 0 - Terracotta */}
+          {/* Digit 0 - Warm Amber */}
           <div className="anim-pop-num-2">
             <svg
               viewBox="0 0 76 128"
@@ -113,7 +113,7 @@ export const HeroSection: React.FC = () => {
                 height="100"
                 rx="24"
                 fill="none"
-                stroke="#b8552f"
+                stroke="#c85b28"
                 strokeWidth="16"
                 strokeLinecap="square"
               />
@@ -122,28 +122,28 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Title: URODZINY STANISŁAWA */}
-        <h1 className="font-['Big_Shoulders_Display'] text-[42px] sm:text-[48px] font-extrabold uppercase leading-[0.88] tracking-tight mt-1 mb-3.5 anim-reveal-title">
-          <span className="text-[#211d1a]">Urodziny </span>
-          <span className="text-[#b8552f]">{EVENT.hostFirstNameGen}</span>
+        <h1 className="font-display text-[42px] sm:text-[48px] font-extrabold uppercase leading-[0.88] tracking-tight mt-1 mb-3.5 anim-reveal-title">
+          <span className="text-[#1e1a17]">Urodziny </span>
+          <span className="text-[#c85b28]">{EVENT.hostFirstNameGen}</span>
         </h1>
 
-        {/* Terracotta line */}
-        <div className="w-14 h-[3px] rounded-full bg-[#b8552f] mb-3.5 anim-grow-line origin-center" />
+        {/* Terracotta / Amber line */}
+        <div className="w-14 h-[3px] rounded-full bg-[#c85b28] mb-3.5 anim-grow-line origin-center" />
 
         {/* Date line */}
-        <p className="text-[13.5px] leading-relaxed text-[#8a8172] max-w-[240px] anim-rise-date">
+        <p className="text-[13.5px] leading-relaxed text-[#877d70] max-w-[240px] anim-rise-date">
           {EVENT.dateLabel}, {EVENT.weekdayLabel}, godz.{' '}
-          <strong className="font-bold text-[#211d1a]">{EVENT.timeLabel}</strong>
+          <strong className="font-bold text-[#1e1a17]">{EVENT.timeLabel}</strong>
         </p>
       </div>
 
       {/* 3. Bottom Scroll Indicator */}
-      <div className="anim-scroll-cue flex flex-col items-center gap-1.5 pb-2 text-[#8a8172]">
+      <div className="anim-scroll-cue flex flex-col items-center gap-1.5 pb-2 text-[#877d70]">
         <span className="text-[11px] font-bold uppercase tracking-[0.18em]">
           Przewiń
         </span>
         <svg
-          className="w-4 h-4 stroke-[#8a8172]"
+          className="w-4 h-4 stroke-[#877d70]"
           viewBox="0 0 24 24"
           fill="none"
           strokeWidth="2"
