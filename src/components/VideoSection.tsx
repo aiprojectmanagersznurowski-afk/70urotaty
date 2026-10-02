@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const YOUTUBE_ID = 'wGfDYsa7xSU';
-const START_SECONDS = 11 * 60 + 52; // 11:52
+const START_SECONDS = 11 * 60 + 53; // 11:53
 
 export const VideoSection: React.FC = () => {
   const revealRef = useScrollReveal<HTMLDivElement>({

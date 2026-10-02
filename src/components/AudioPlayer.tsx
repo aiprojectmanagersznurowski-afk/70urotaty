@@ -14,24 +14,44 @@ export const AudioPlayer: React.FC = () => {
     audio.volume = 0.55;
     audioRef.current = audio;
 
-    // Try autoplay
+    // Próba autoplay z dźwiękiem (działa np. na desktopie, jeśli przeglądarka pozwala)
     audio
       .play()
       .then(() => {
         setIsPlaying(true);
       })
       .catch(() => {
-        // Expected browser autoplay policy block
-        setIsPlaying(false);
+        // Zablokowane przez politykę przeglądarki (typowe na mobile) -
+        // uruchamiamy od razu wyciszone, bo to przeglądarki zawsze dopuszczają,
+        // a dźwięk odblokujemy automatycznie przy pierwszej interakcji użytkownika.
+        if (audioRef.current) {
+          audioRef.current.muted = true;
+          audioRef.current
+            .play()
+            .then(() => {
+              setIsPlaying(true);
+              setIsMuted(true);
+            })
+            .catch(() => {
+              setIsPlaying(false);
+            });
+        }
       });
 
-    // Unlock audio on first user gesture
+    // Odblokuj dźwięk przy pierwszej interakcji użytkownika (dotyk, scroll, klik, klawisz)
     const unlockAudio = () => {
-      if (audioRef.current && audioRef.current.paused) {
-        audioRef.current
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch(() => {});
+      const current = audioRef.current;
+      if (current) {
+        current.muted = false;
+        setIsMuted(false);
+        if (current.paused) {
+          current
+            .play()
+            .then(() => setIsPlaying(true))
+            .catch(() => {});
+        } else {
+          setIsPlaying(true);
+        }
       }
       cleanupListeners();
     };
