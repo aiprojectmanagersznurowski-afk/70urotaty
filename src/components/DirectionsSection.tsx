@@ -17,11 +17,12 @@ export const DirectionsSection: React.FC = () => {
     return /iP(hone|od|ad)/.test(navigator.userAgent);
   }, []);
 
-  const getNavigationUrl = (lat: number, lng: number) => {
+  const getNavigationUrl = (destination: string) => {
+    const encoded = encodeURIComponent(destination);
     if (isIOS) {
-      return `maps://maps.apple.com/?daddr=${lat},${lng}`;
+      return `maps://maps.apple.com/?daddr=${encoded}`;
     }
-    return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    return `https://www.google.com/maps/dir/?api=1&destination=${encoded}`;
   };
 
   return (
@@ -32,34 +33,19 @@ export const DirectionsSection: React.FC = () => {
           Dojazd
         </span>
 
-        {/* Buttons - broadened */}
+        {/* Navigation Button */}
         <div className="w-full flex flex-col gap-3">
-          {/* 1. Navigate to Venue */}
           <a
-            href={getNavigationUrl(VENUE.lat, VENUE.lng)}
+            href={getNavigationUrl(VENUE.address)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full rounded-[20px] bg-[var(--color-terracotta)] hover:opacity-95 active:scale-[0.98] text-white px-6 py-4 flex items-center justify-between transition-all shadow-sm"
           >
             <div className="flex flex-col text-left">
               <span className="text-[16px] sm:text-[17px] font-bold">Nawiguj do restauracji</span>
-              <span className="text-[13.5px] text-white/80 mt-0.5">{VENUE.name}</span>
+              <span className="text-[13.5px] text-white/80 mt-0.5">{VENUE.address}</span>
             </div>
             <ArrowUpRight className="w-5 h-5 text-white shrink-0 stroke-[2.5]" />
-          </a>
-
-          {/* 2. Navigate to Parking */}
-          <a
-            href={getNavigationUrl(PARKING.lat, PARKING.lng)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full rounded-[20px] bg-white border border-[var(--color-line)] hover:bg-neutral-50 active:scale-[0.98] text-[var(--color-ink)] px-6 py-4 flex items-center justify-between transition-all shadow-sm"
-          >
-            <div className="flex flex-col text-left">
-              <span className="text-[16px] sm:text-[17px] font-bold">Nawiguj na parking</span>
-              <span className="text-[13.5px] text-[var(--color-muted)] mt-0.5">{PARKING.name}</span>
-            </div>
-            <ArrowUpRight className="w-5 h-5 text-[var(--color-muted)] shrink-0 stroke-[2.5]" />
           </a>
         </div>
 

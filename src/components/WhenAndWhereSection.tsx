@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Footprints } from 'lucide-react';
+import { Calendar, MapPin, Footprints, ExternalLink } from 'lucide-react';
 import { EVENT, VENUE, AFTER } from '../config';
 import { downloadIcsFile, getGoogleCalendarUrl } from '../lib/calendar';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -43,11 +43,24 @@ export const WhenAndWhereSection: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-[var(--color-khaki)] text-[var(--color-terracotta)] flex items-center justify-center shrink-0 mt-0.5">
               <MapPin className="w-5 h-5 stroke-[2]" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col items-start">
               <span className="text-[16px] sm:text-[17px] font-bold text-[var(--color-ink)]">
                 {VENUE.name}
               </span>
-              <span className="text-[13.5px] sm:text-[14px] text-[var(--color-muted)] mt-0.5 leading-relaxed">
+              {VENUE.website && (
+                <a
+                  href={VENUE.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[13.5px] sm:text-[14px] font-semibold text-[var(--color-terracotta)] hover:opacity-80 active:scale-[0.98] transition-all mt-1 group"
+                >
+                  <span className="underline underline-offset-4 decoration-[var(--color-terracotta)]/40 hover:decoration-[var(--color-terracotta)]">
+                    Strona restauracji
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 stroke-[2.2] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              )}
+              <span className="text-[13.5px] sm:text-[14px] text-[var(--color-muted)] mt-1.5 leading-relaxed">
                 {VENUE.address}
               </span>
             </div>

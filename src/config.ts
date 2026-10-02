@@ -14,7 +14,7 @@ export const EVENT = {
 export const VENUE = {
   name: "Restauracja & Pizzeria Toscana",
   shortName: "Restauracja Toscana",
-  address: "ul. Spokojna 3, 58-130 Wierzbna",
+  address: "Spokojna 3, 58-130 Wierzbna",
   website: "https://www.facebook.com/toscanawierzbna/?locale=pl_PL",
   lat: 50.8997,
   lng: 16.5360,
