@@ -47,6 +47,22 @@
   --theme-num-2: #b35434;
 }
 
+/* New Blue Theme: Królewski Kobalt & Śródziemnomorski Lazur */
+[data-theme="cobalt-azure"] {
+  --color-bg: #ffffff;
+  --color-paper: #ffffff;
+  --color-ink: #0a2540; /* Królewski kobalt / głęboki granat */
+  --color-muted: #486581; /* Błękitno-stalowy */
+  --color-terracotta: #0077b6; /* Świeży lazurowy błękit akcentowy */
+  --color-terracotta-deep: #023e8a; /* Głęboki błękit szafirowy */
+  --color-khaki: #f0f7fd; /* Lodowy błękit */
+  --color-khaki-deep: #90e0ef; /* Lazurowy rozbłysk */
+  --color-line: rgba(10, 37, 64, 0.12);
+  --theme-glow: rgba(0, 119, 182, 0.45);
+  --theme-num-1: #0a2540;
+  --theme-num-2: #0077b6;
+}
+
 html {
   scroll-behavior: smooth;
   background-color: #ffffff;

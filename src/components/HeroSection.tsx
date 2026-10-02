@@ -56,9 +56,9 @@ export const HeroSection: React.FC = () => {
         ref={contentRef}
         className="w-full max-w-[500px] sm:max-w-xl flex flex-col items-center my-auto py-1"
       >
-        {/* Photo: enlarged +40%, shifted lower & to the left so "Zapraszam na" starts at 50% */}
+        {/* Photo: enlarged +40%, shifted lower & to the left so "Zapraszam na" starts at 50% and never overlaps text */}
         <div className="w-full flex justify-start pl-0 mb-[-55px] sm:mb-[-70px] relative z-10 pointer-events-none">
-          <div className="relative w-[230px] sm:w-[280px] h-[215px] sm:h-[260px] -translate-x-10 sm:-translate-x-14">
+          <div className="relative w-[230px] sm:w-[280px] h-[215px] sm:h-[260px] -translate-x-[95px] sm:-translate-x-[125px]">
             {/* Dynamic theme warm glow */}
             <div
               className="absolute inset-0 rounded-full"
