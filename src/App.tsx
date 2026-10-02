@@ -34,14 +34,14 @@ export const App: React.FC = () => {
         {/* 6. Dla najmłodszych */}
         <KidsSection />
 
+        {/* 6b. Film ze wspomnieniami */}
+        <VideoSection />
+
         {/* 7. RSVP (formularz z Google Sheets) */}
         <RsvpSection />
 
         {/* 8. Galeria zdjęć */}
         <GallerySection />
-
-        {/* 8b. Film ze wspomnieniami */}
-        <VideoSection />
       </main>
 
       {/* 9. Stopka */}
