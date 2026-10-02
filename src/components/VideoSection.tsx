@@ -13,15 +13,8 @@ export const VideoSection: React.FC = () => {
   });
 
   return (
-    <section className="w-full flex flex-col items-center px-6 py-14 sm:py-20 bg-white">
-      <span className="font-display text-[15px] sm:text-[17px] uppercase tracking-[0.3em] font-extrabold text-[var(--color-terracotta)] mb-4">
-        Wspomnienia
-      </span>
-
-      <div
-        ref={revealRef}
-        className="w-full max-w-3xl rounded-[18px] overflow-hidden shadow-lg border border-[var(--color-line)] aspect-video"
-      >
+    <section className="w-full overflow-hidden bg-white">
+      <div ref={revealRef} className="w-full aspect-video">
         <iframe
           className="w-full h-full"
           src={`https://www.youtube.com/embed/${YOUTUBE_ID}?start=${START_SECONDS}`}
