@@ -45,7 +45,7 @@ export const MUSIC = {
 
 export const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1ouOYi-DBtntQ-BPmBS3rd2_OeT3_UgWMGgnHh93klw8/edit?usp=sharing";
 export const GOOGLE_SHEET_ID = "1ouOYi-DBtntQ-BPmBS3rd2_OeT3_UgWMGgnHh93klw8";
-export const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbwPzRSVP70TatoWebservice/exec";
+export const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbwAUoygUAheuX0qAy9Avo5Tn3aqQdgEohGl8RoTmHEeg2nKSe8x-IJs5JxC8eADaWIS/exec";
 
 export interface GalleryPhoto {
   src: string;
