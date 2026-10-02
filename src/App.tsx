@@ -7,6 +7,7 @@ import { DirectionsSection } from './components/DirectionsSection';
 import { KidsSection } from './components/KidsSection';
 import { RsvpSection } from './components/RsvpSection';
 import { GallerySection } from './components/GallerySection';
+import { VideoSection } from './components/VideoSection';
 import { FooterSection } from './components/FooterSection';
 
 export const App: React.FC = () => {
@@ -38,6 +39,9 @@ export const App: React.FC = () => {
 
         {/* 8. Galeria zdjęć */}
         <GallerySection />
+
+        {/* 8b. Film ze wspomnieniami */}
+        <VideoSection />
       </main>
 
       {/* 9. Stopka */}
