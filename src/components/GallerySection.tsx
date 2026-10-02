@@ -190,10 +190,6 @@ export const GallerySection: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
             className="w-full max-w-xl flex flex-col items-center gap-3 pb-2 z-10"
           >
-            {/* Alt text / Caption pill */}
-            <div className="bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 text-[13px] text-white/95 text-center shadow-lg">
-              {currentPhoto.alt}
-            </div>
 
             {/* Thumbnails row */}
             <div className="flex items-center gap-1.5 overflow-x-auto max-w-full px-2 py-1 scrollbar-none">

@@ -38,9 +38,9 @@ export const KIDS = {
 };
 
 export const MUSIC = {
-  title: "Toskański Poranek",
-  artist: "Acoustic Serenada",
-  src: "/audio/toscan-ambient.mp3",
+  title: "I Don't Want to Miss a Thing",
+  artist: "Aerosmith",
+  src: "/audio/aerosmith-miss-a-thing.mp3",
 };
 
 export const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1ouOYi-DBtntQ-BPmBS3rd2_OeT3_UgWMGgnHh93klw8/edit?usp=sharing";
@@ -57,12 +57,29 @@ export const PHOTOS = {
   portrait: "/photos/tata-portrait-upper.png",
   hero: "/photos/IMG_9176.jpg",
   gallery: [
-    { src: "/photos/IMG_5236.JPG", alt: "W gronie najbliższych przy wspólnym stole" },
-    { src: "/photos/IMG_2800.JPG", alt: "Uśmiechnięty Stanisław w podróży" },
-    { src: "/photos/20201108_115158.JPG", alt: "Jesienny spacer i chwila wytchnienia" },
-    { src: "/photos/20191012_134804.JPG", alt: "Rodzinne chwile i spotkania" },
-    { src: "/photos/IMG_9245.jpg", alt: "Wspomnienia z wakacyjnych wyjazdów" },
-    { src: "/photos/IMG_9207.jpg", alt: "Radość i pogoda ducha" },
-    { src: "/photos/tata-beach-panorama.jpg", alt: "Słoneczny dzień nad morzem i klify", wide: true },
+    { src: "/photos/gallery/g01.jpg", alt: "Zdjęcie 1" },
+    { src: "/photos/gallery/g02.jpg", alt: "Zdjęcie 2" },
+    { src: "/photos/gallery/g03.jpg", alt: "Zdjęcie 3" },
+    { src: "/photos/gallery/g04.jpg", alt: "Zdjęcie 4" },
+    { src: "/photos/gallery/g05.jpg", alt: "Zdjęcie 5" },
+    { src: "/photos/gallery/g06.jpg", alt: "Zdjęcie 6" },
+    { src: "/photos/gallery/g07.jpg", alt: "Zdjęcie 7" },
+    { src: "/photos/gallery/g08.jpg", alt: "Zdjęcie 8" },
+    { src: "/photos/gallery/g09.jpg", alt: "Zdjęcie 9" },
+    { src: "/photos/gallery/g10.jpg", alt: "Zdjęcie 10" },
+    { src: "/photos/gallery/g11.jpg", alt: "Zdjęcie 11" },
+    { src: "/photos/gallery/g12.jpg", alt: "Zdjęcie 12" },
+    { src: "/photos/gallery/g13.jpg", alt: "Zdjęcie 13" },
+    { src: "/photos/gallery/g14.jpg", alt: "Zdjęcie 14" },
+    { src: "/photos/gallery/g15.jpg", alt: "Zdjęcie 15" },
+    { src: "/photos/gallery/g16.jpg", alt: "Zdjęcie 16" },
+    { src: "/photos/gallery/g17.jpg", alt: "Zdjęcie 17" },
+    { src: "/photos/gallery/g18.jpg", alt: "Zdjęcie 18" },
+    { src: "/photos/gallery/g19.jpg", alt: "Zdjęcie 19" },
+    { src: "/photos/gallery/g20.jpg", alt: "Zdjęcie 20" },
+    { src: "/photos/gallery/g21.jpg", alt: "Zdjęcie 21" },
+    { src: "/photos/gallery/g22.jpg", alt: "Zdjęcie 22" },
+    { src: "/photos/gallery/g23.jpg", alt: "Zdjęcie 23" },
+    { src: "/photos/gallery/g24.jpg", alt: "Zdjęcie 24" },
   ] as GalleryPhoto[],
 };
